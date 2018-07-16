@@ -1,0 +1,17 @@
+ [
+      {
+        "id": "distributed_ip",
+        "name": "Distibuted IP",
+        "startDate": 1442870400,
+        "endDate": 1577836800,
+        "impact": 4
+      },
+      {
+        "id": "power_harvesting",
+        "name": "Power Harvesting",
+        "startDate": 1735689600,
+        "endDate": 1893456000,
+        "impact": 2
+      }
+    ]
+  

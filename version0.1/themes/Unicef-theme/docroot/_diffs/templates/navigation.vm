@@ -1,0 +1,42 @@
+<div class="ust-newmenu-mainbox clearfix n-collapse" id="ust-menu-layer">
+  <div class="ust-newmenu-title01 clearfix">
+    <div class="ust-nm-title01-box1">MENU</div>
+    <div class="ust-nm-title01-box2"><a href="#" class="ust-menu-fix01" data-toggle="n-collapse" data-target="#ust-menu-layer" >close</a></div>
+  </div>
+  <div class="clearfix ust-Menufix01">
+  	#set ($menuCounter = 1)
+    #foreach ($nav_item in $nav_items)
+	    #if ($nav_item.getName() != "Home")
+	    	<div class="ust-nm-box01">
+		      <div class="ust-nm-title02">$nav_item.getName()</div>
+		      #if ($menuCounter == 1) 
+		      	<div class="ust-nm-icons"><img src="$images_folder/ust-menu-icon-01.png"></div>
+		      #elseif ($menuCounter == 2)	
+		      	<div class="ust-nm-icons"><img src="$images_folder/ust-menu-icon-03.png"></div>
+		      #elseif ($menuCounter == 3)	
+		      	<div class="ust-nm-icons"><img src="$images_folder/ust-menu-icon-03.png"></div>
+		      #elseif ($menuCounter == 4)	
+		      	<div class="ust-nm-icons"><img src="$images_folder/ust-menu-icon-04.png"></div>
+		      #end	
+		      #set ($menuCounter = $menuCounter + 1)
+		      <div class="ust-nm-link01">
+			      #if ($nav_item.hasChildren())
+			      	#foreach ($nav_child in $nav_item.getChildren())
+			      		<a href="$nav_child.getURL()"
+			      		#if ($nav_child.getName()== 'Submit an Idea')
+           					class="yellowblock"  
+           				#elseif ($nav_child.getName()== 'Seek a Solution')
+           					class="yellowblock" 
+           				#end
+			      		>$nav_child.getName()</a> 
+			      	#end
+			      #end
+			  </div>		      
+	    	</div>
+	    #end
+    #end
+    
+  </div>
+
+</div>
+

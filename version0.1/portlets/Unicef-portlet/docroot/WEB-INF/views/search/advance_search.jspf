@@ -1,0 +1,328 @@
+<div class="clearfix">
+<div class="col-xs-12 as-title01 buffer-bottom">Advanced Search</div>
+<aui:form action="<%= advanceSearchURL %>" method="post" name="advanceSearchForm" onSubmit='<%="event.preventDefault();"+renderResponse.getNamespace()+"advanceSearchResult();"%>' autocomplete="off">
+	<div class="col-xs-12 clearfix buffer-bottom">
+	    <div class="as-form-box1"><liferay-ui:message key="source"/>:</div>
+	    <div class="as-form-box2">
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>sourceField" value='<liferay-ui:message key="repository"/>' id="<portlet:namespace/>ourceFieldRepository" /><liferay-ui:message key="repository"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>sourceField" value='<liferay-ui:message key="solutions"/>' id="<portlet:namespace/>sourceFieldSolutions"/><liferay-ui:message key="solutions"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>sourceField" value='<liferay-ui:message key="ideas"/>' id="<portlet:namespace/>sourceFieldIdeas"/><liferay-ui:message key="ideas"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>sourceField" value='<liferay-ui:message key="website"/>' id="<portlet:namespace/>sourceFieldWebsite"/><liferay-ui:message key="website"/></label>
+		</div>
+	</div>
+	
+	<div class="col-xs-12 clearfix buffer-bottom">
+	    <div class="as-form-box1"><liferay-ui:message key="type"/>:</div>
+	    <div class="as-form-box2">
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>typeField" value='<liferay-ui:message key="a-new-product"/>' id="<portlet:namespace/>typeFieldNewProduct" /><liferay-ui:message key="a-new-product"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>typeField" value='<liferay-ui:message key="a-new-service"/>' id="<portlet:namespace/>typeFieldNewService"/><liferay-ui:message key="a-new-service"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>typeField" value='<liferay-ui:message key="good-practices"/>' id="<portlet:namespace/>typeFieldGoodPractices"/><liferay-ui:message key="good-practices"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>typeField" value='<liferay-ui:message key="improving-how-we-word"/>' id="<portlet:namespace/>typeFieldImprovingHowWeWord"/><liferay-ui:message key="improving-how-we-word"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>typeField" value='<liferay-ui:message key="lessions-learned"/>' id="<portlet:namespace/>typeFieldLessionsLearned"/><liferay-ui:message key="lessions-learned"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>typeField" value='<liferay-ui:message key="social-innovation"/>' id="<portlet:namespace/>typeFieldSocialInnovation"/><liferay-ui:message key="social-innovation"/></label>
+		</div>
+	</div>
+	
+	<div class="col-xs-12 clearfix buffer-bottom">
+	    <div class="as-form-box1"><liferay-ui:message key="stage"/>:</div>
+	    <div class="as-form-box2">
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>stageField" value='<liferay-ui:message key="backlog"/>' id="<portlet:namespace/>stageFieldBacklog" /><liferay-ui:message key="backlog"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>stageField" value='<liferay-ui:message key="developing"/>' id="<portlet:namespace/>stageFieldDeveloping"/><liferay-ui:message key="developing"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>stageField" value='<liferay-ui:message key="archived"/>' id="<portlet:namespace/>stageFieldArchived"/><liferay-ui:message key="archived"/></label>
+			<label class="checkbox-inline"><input type="checkbox" name="<portlet:namespace/>stageField" value='<liferay-ui:message key="deployed"/>' id="<portlet:namespace/>stageFieldDeployed"/><liferay-ui:message key="deployed"/></label>
+		</div>
+	</div>
+	
+	<div class="col-xs-12 clearfix buffer-bottom">
+	    <div class="as-form-box3">
+	   		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+         		<tr>
+            		<td class="as-bd-font"><liferay-ui:message key="from"/>:</td>
+            		<td><input type="text" id="<portlet:namespace/>fieldFrom" placeholder="Enter Date" name="<portlet:namespace/>fieldFrom" class="datepicker cg-form-control" /></td>
+          		</tr>
+       	 	</table>
+	    </div>
+	    <div class="as-form-box3">
+	    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          		<tr>
+            		<td class="as-bd-font"><liferay-ui:message key="to"/>:</td>
+            		<td><input type="text" id="<portlet:namespace/>fieldTo" placeholder="Enter Date" name="<portlet:namespace/>fieldTo" class="datepicker cg-form-control" /></td>
+          		</tr>
+        	</table>
+	    </div>
+	    <div class="as-form-box4">
+	    	 <label class="checkbox-inline">
+	    	 	<input type="checkbox" name="<portlet:namespace/>hotIdeasField" value='<liferay-ui:message key="hot-ideas-only"/>' id="<portlet:namespace/>hotIdeasField" />
+	    	 	<liferay-ui:message key="hot-ideas-only"/>
+	    	 </label>
+	    </div>
+	 </div> 
+	 
+	 <div class="col-xs-12 clearfix buffer-bottom">
+	 	<div class="row">
+	 		<div class="col-sm-6 col-xs-12" id="includeTagscontainer">
+			    <label>
+				     <b>Include:</b>
+		 		     <input id="<portlet:namespace/>includeTags" name="<portlet:namespace/>includeTags" maxlength="75" size="15" title="Include Tags" type="text" tabindex="null" class="cg-form-control np-advancesearch-inputfix" style="display:none !important;">
+				</label>
+		 		<input id="<portlet:namespace/>includeTagsHidden" name="<portlet:namespace/>includeTagsHidden" type="hidden">
+		 		<a class="btn btn-primary np-advancesearch-btnfix" title="Search tags" onclick="<portlet:namespace />generateIncludeTagsSuggestionBox();" >
+		 			<span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+		 		</a>
+		 		
+	 		</div>
+	 		<div class="col-sm-6 col-xs-12" id="excludeTagscontainer">
+			    <label>
+				     <b>Exclude:</b>
+		 		<input id="<portlet:namespace/>excludeTags" name="<portlet:namespace/>excludeTags" maxlength="75" size="15" title="Exclude Tags" type="text" tabindex="null" class="cg-form-control np-advancesearch-inputfix" style="display:none !important;">
+				</label>
+		 		<input id="<portlet:namespace/>excludeTagsHidden" name="<portlet:namespace/>excludeTagsHidden" type="hidden">
+		 		<a class="btn btn-primary np-advancesearch-btnfix" title="Search tags" 	onclick="<portlet:namespace />generateExcludeTagsSuggestionBox();" >
+		 			<span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+		 		</a>
+	 		</div>
+	 	</div>
+	</div>
+	 
+	<div class="col-xs-12 clearfix buffer-bottom" style="text-align: center;"> 
+	 	<aui:button type="submit" class="btn btn-primary" value="Search"></aui:button>  
+	</div>
+	
+    <div class="col-xs-12 clearfix buffer-bottom as-title02">
+    	<liferay-ui:message key="looking-for-text"/>
+    </div>
+    
+    <!-- <div class="col-xs-12 clearfix buffer-bottom">
+    	<a class="as-btn01" href="http://www.unicef.org/search/search.php" target="_blank"><liferay-ui:message key="unicef-global-web"/></a>
+    	<a class="as-btn01" href="http://www.polioeradication.org/" target="_blank"><liferay-ui:message key="polio-eradiation"/></a>
+   	</div> -->
+</aui:form>
+<div id="includeTagsSuggestionbox"></div>
+<div id="includeTagsSuggestionbox-result" style="display:none;">
+	<div class="lfr-tags-selector-list">
+	    <div>
+			<input placeholder="Search" type="text" id="<portlet:namespace/>includeSearchSuggestionTags" 
+			name="<portlet:namespace/>includeSearchSuggestionTags" onkeyup="<portlet:namespace/>searchSuggestedTags('include', true);"/>
+		</div>
+		<div id="includeSuggestTagsFieldSetContainer" style="height: 250px;overflow-y: scroll;">
+			<div id="includeLoadingDiv" style="display: none;width: 100%;text-align: center;margin-top: 120px;min-height:250px;">
+  				<img alt="" border="no" src="<%=themeDisplay.getPathThemeImages()%>/progress_bar/loading_animation.gif"  />
+			</div>
+		</div>
+	</div>
+</div>
+<div id="excludeTagsSuggestionbox"></div>
+<div id="excludeTagsSuggestionbox-result" style="display:none;">
+	<div class="lfr-tags-selector-list">
+	    <div>
+			<input placeholder="Search" type="text" id="<portlet:namespace/>excludeSearchSuggestionTags" 
+			name="<portlet:namespace/>excludeSearchSuggestionTags" onkeyup="<portlet:namespace/>searchSuggestedTags('exclude', true);"/>
+		</div>
+		<div id="excludeSuggestTagsFieldSetContainer" style="height: 250px;overflow-y: scroll;">
+			<div id="excludeLoadingDiv" style="display: none;width: 100%;text-align: center;margin-top: 120px;min-height:250px;">
+  				<img alt="" border="no" src="<%=themeDisplay.getPathThemeImages()%>/progress_bar/loading_animation.gif"  />
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+
+<script type="text/javascript">
+        $(document).ready(function() {
+        	var includeTagsValue=$("#<portlet:namespace/>includeTags").val();
+        	includeTagsValue = includeTagsValue.replace(/[^a-zA-Z0-9 ]/g, "");	
+        	var excludeTagsValue=$("#<portlet:namespace/>excludeTags").val();
+        	excludeTagsValue = excludeTagsValue.replace(/[^a-zA-Z0-9 ]/g, "");	
+        	$.ajax({
+        	    url: "<%=suggestTags.toString()%>",
+        	    type: "POST",
+        	    dataType: "json",
+        	    data:{
+        			<portlet:namespace />searchChars:includeTagsValue,
+        		},
+        	    success: function( data ) {
+        	    	$("#<portlet:namespace/>includeTags").tokenInput(data, {
+                		theme: "facebook"
+            		});    
+        	    },
+        	    error: function (error) {
+        	       consoloe.log('error in getting suggested tags: ' + error);
+        	    }
+            });
+        	$.ajax({
+        	    url: "<%=suggestTags.toString()%>",
+        	    type: "POST",
+        	    dataType: "json",
+        	    data:{
+        			<portlet:namespace />searchChars:excludeTagsValue,
+        		},
+        	    success: function( data ) {
+        	    	$("#<portlet:namespace/>excludeTags").tokenInput(data, {
+                		theme: "facebook"
+            		}); 
+        	    },
+        	    error: function (error) {
+        	       consoloe.log('error in getting suggested tags: ' + error);
+        	    }
+            });
+        });
+        </script> 
+<aui:script>
+$(document).ready(function() {
+	<portlet:namespace/>initDatePicker();
+});
+<portlet:namespace />advanceSearchResult = function(){
+	var excludeTags = $('#<portlet:namespace/>excludeTags').tokenInput("get");
+	var includeTags = $('#<portlet:namespace/>includeTags').tokenInput("get");
+    var excludeTagsArray = [];
+    var includeTagsArray = [];
+    $.each(includeTags, function(i, obj){
+        includeTagsArray.push(obj.id);
+    });
+     $.each(excludeTags, function(i, obj){
+        excludeTagsArray.push(obj.id);
+    });
+    $('#<portlet:namespace/>includeTagsHidden').val(includeTagsArray.join());
+    $('#<portlet:namespace/>excludeTagsHidden').val(excludeTagsArray.join());
+    submitForm(document.<portlet:namespace />advanceSearchForm);
+}
+<portlet:namespace/>initDatePicker = function(){
+	<portlet:namespace/>searchFromDatePicker();
+	<portlet:namespace/>searchMinDatePicker('<portlet:namespace/>fieldTo','<portlet:namespace/>fieldFrom');
+};
+<portlet:namespace/>searchFromDatePicker = function(){
+	$('#<portlet:namespace/>fieldFrom').datepicker({
+		   showAnim: 'slide',
+		   dateFormat: 'mm/dd/yy',
+		   onSelect: function() {
+			   	jQuery('#<portlet:namespace/>fieldTo').val('');
+				jQuery('#<portlet:namespace/>fieldTo').removeClass('hasDatepicker');
+				jQuery('#<portlet:namespace/>fieldTo').datepicker('destroy');
+				<portlet:namespace/>searchMinDatePicker('<portlet:namespace/>fieldTo','<portlet:namespace/>fieldFrom');
+		   }
+		});
+};
+<portlet:namespace/>searchMinDatePicker = function(id1,id2){
+	var min = null;
+	if($('#'+id2).datepicker( "getDate" ) != null){
+		min =  new Date($('#'+id2).datepicker("getDate").getTime());
+		min.setDate(min.getDate() + 1);
+	}
+	if(min != null){
+		$('#'+id1).datepicker({
+			 minDate : min,
+		     showAnim: 'slide',
+			 dateFormat: 'mm/dd/yy',
+	 	});	
+	};
+};
+<portlet:namespace />generateIncludeTagsSuggestionBox=function(){ 
+	var includeTagsSuggesionsModal;
+	AUI().use('aui-base','aui-modal', function(A) {
+		A.one('#includeTagsSuggestionbox-result').setStyle('display','block');
+		includeTagsSuggesionsModal = new A.Modal(
+		{
+			srcNode : '#includeTagsSuggestionbox-result',
+			centered: true,
+			draggable: false,
+			resizable: false,
+			headerContent:"Tags",
+			modal: true,
+			render: '#includeTagsSuggestionbox',
+			width: 450
+		}
+		);
+	});
+	<portlet:namespace/>searchSuggestedTags('include', false); 
+	return includeTagsSuggesionsModal;
+}
+<portlet:namespace />generateExcludeTagsSuggestionBox=function(){ 
+	var excludeTagsSuggesionsModal;
+	AUI().use('aui-base','aui-modal', function(A) {
+		A.one('#excludeTagsSuggestionbox-result').setStyle('display','block');
+		excludeTagsSuggesionsModal = new A.Modal(
+		{
+			srcNode : '#excludeTagsSuggestionbox-result',
+			centered: true,
+			draggable: false,
+			resizable: false,
+			headerContent:"Tags",
+			modal: true,
+			render: '#excludeTagsSuggestionbox',
+			width: 450
+		}
+		);
+	});
+	<portlet:namespace/>searchSuggestedTags('exclude', false); 
+	return excludeTagsSuggesionsModal;
+}
+</aui:script>
+<script>
+<portlet:namespace/>searchSuggestedTags = function(type, iskeyUp){
+	if(!iskeyUp){
+		$('#'+type+'LoadingDiv').show();
+	}
+	var inputValue=$("#<portlet:namespace/>"+type+"SearchSuggestionTags").val();
+    inputValue = inputValue.replace(/[^a-zA-Z0-9 ]/g, "");	
+    $.ajax({
+	    url: "<%=suggestTags.toString()%>",
+	    type: "POST",
+	    dataType: "json",
+	    data:{
+			<portlet:namespace />searchChars:inputValue,
+		},
+	    success: function( data ) {
+	    	<portlet:namespace/>appendTagsLabel(data, type);
+	    	if(!iskeyUp){
+	    		$('#'+type+'LoadingDiv').hide();
+	    	}
+	    },
+	    error: function (error) {
+	       console.log('error in getting suggested tags: ' + error);
+	    }
+    });
+}
+<portlet:namespace/>appendTagsLabel = function(data, type){
+	var selectedTagsArray = [];
+	
+	$("#"+type+"SuggestTagsFieldSetContainer").children().remove();
+	$('#'+type+'Tagscontainer .token-input-token-facebook').each(function(index, li) {
+	        selectedTagsArray.push($(li).find("p").text());
+		});
+	selectedTagsArray.join();
+	$.each(data, function(index, element) {
+		var checked = $.inArray(element.name, selectedTagsArray) > -1;
+		if(checked){
+			var labelHTML = "<label class=\"checkbox\" title=\""+element.name+"\">"+
+			"<input type=\"checkbox\" value=\""+element.name+"\" checked onchange=\"updateSearchSuggestion(this,'"+type+"');\">"+element.name+"</label>";
+			$("#"+type+"SuggestTagsFieldSetContainer").append(labelHTML);
+		}else{
+			var labelHTML = "<label class=\"checkbox\" title=\""+element.name+"\">"+
+			"<input type=\"checkbox\" value=\""+element.name+"\" onchange=\"updateSearchSuggestion(this,'"+type+"');\">"+element.name+"</label>";
+			$("#"+type+"SuggestTagsFieldSetContainer").append(labelHTML);
+		}
+    });
+}
+
+function updateSearchSuggestion(cBox,type){
+				 
+	if($(cBox).is(":checked")){
+		var liHTML = "<li class=\"token-input-token-facebook\">" +
+					 "<p>"+$(cBox).val()+"</p><span class=\"token-input-delete-token-facebook\" onclick=\"removeTag(this);\">×</span></li>";
+		$("#"+type+"Tagscontainer .token-input-input-token-facebook").before(liHTML);
+	} else {
+		$("#"+type+"Tagscontainer .token-input-token-facebook").each(function(index, li) {
+	        if($(li).find("p").text() == $(cBox).val()){
+	        	$(li).remove();
+	        	return false;
+	        }
+		});
+	}
+}
+function removeTag(span){
+	$(span).parent().remove();
+}
+</script>

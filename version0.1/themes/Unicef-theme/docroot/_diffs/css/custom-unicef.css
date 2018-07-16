@@ -1,0 +1,283 @@
+.np-login-bgfix{
+	background-color: transparent !important;
+}
+ 
+
+.np-input .control-group{ margin-bottom:0px !important;}
+.np-logo .logo{ display:block; width: 164px; padding-top:12px;}
+.np-menu-block02{ position:absolute; right:0px; top:0px; z-index:11;}
+ 
+.np-custome-container01{ padding:0 !important; margin:0px !important; background-color:#FFF !important;}
+.np-custome-container01 .np-header{ margin:0px; display:block; background:#8cc540; padding:20px;}
+
+.np-custome-container02{ padding:0px !important; margin:0px !important; background-color:#FFF !important;}
+
+
+ 
+/*.aui body{ background-color:#dbdbdb !important;}*/ 
+.np-portlate-fix01{ margin:0 20px; background-color:#FFF;}
+.np-portlate-fix0111{background: url(../images/patter-bg01.png) left top repeat; margin:0px;     min-height: calc(100vh - 208px); }
+.np-portlate-fix02{ margin:0px; background-color:#FFF;}
+ 
+.so-portlet-activities .activity-item{ border:1px solid #ebebeb !important; border-radius:5px !important; -webkit-border-radius:5px !important; margin-bottom:20px !important; -webkit-box-shadow: 3px 1px 4px 1px rgba(0,0,0,0.2);
+box-shadow: 3px 1px 4px 1px rgba(0,0,0,0.2); } 
+ 
+.so-portlet-activities .activity-user-name{ font-weight:bold !important; color:#0F81D1 !important;}
+
+.so-portlet-activities .avatar{ border-radius:50px !important; -webkit-border-radius:50px !important; overflow:hidden; border:1px solid #CCC;}
+.so-portlet-activities .avatar img{ border-radius:50px !important; -webkit-border-radius:50px !important; overflow:hidden; width:105%;}
+
+.np-form-control-2 {
+	display: block !important;
+	width: 100%  !important;
+	height: 40px !important;
+	padding: 6px 12px !important;
+	font-size: 14px !important;
+	line-height: 1.42857143 !important;
+	color: #555 !important;
+	border:1px solid #FFF !important;
+	background-color: rgba(255, 255, 255, 0.75) !important;
+	background-image: none !important;
+ 	border-radius: 4px !important;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075) !important;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075) !important;
+	-webkit-transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+	-o-transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+	transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+}
+.np-form-control-2:focus {
+	border: 1px solid rgba(255, 255, 255, 0) !important ;
+	outline: 0 !important; background-color:#FFF !important;
+ }
+
+/*for video css*/
+
+.np-video-fix01{ background-color:rgba(0,0,0,0.6); width:100%; max-width:800px; margin:0 auto;}
+.responsive-container { position: relative; padding-bottom: 56.25%;  height: 0; overflow: hidden;  	 }
+.responsive-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%;   }
+
+
+/*for video css end*/
+
+/*login customization css start*/
+
+.np-input .control-label{ color:#FFF !important;font-weight: 500;}
+.np-form-birthday .control-label{ color:#FFF !important;font-weight: 500 !important;}
+.login-main-container .portlet-borderless-container{ background-color:transparent !important;}
+.np-input-name input{ max-width:none !important; }
+
+.np-form-birthday input[type="text"], .np-form-birthday input  {
+	display: block !important;
+	width: 100%  !important;
+	height: 40px !important;
+	padding: 6px 12px !important;
+	font-size: 14px !important;
+	line-height: 1.42857143 !important;
+	color: #555 !important;
+	border:1px solid #FFF !important;
+	background-color: rgba(255, 255, 255, 0.75) !important;
+	background-image: none !important;
+ 	border-radius: 4px !important;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075) !important;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075) !important;
+	-webkit-transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+	-o-transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+	transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+}
+.np-form-birthday input[type="text"]:hover, .np-form-birthday input:hover  {
+	border: 1px solid rgba(255, 255, 255, 0) !important ;
+	outline: 0 !important; background-color:#FFF !important;
+ }
+.np-form-birthday label{ color:#FFF !important;} 
+ 
+.np-form-birthday .control-group{ margin-bottom:8px !important;}
+
+.main-logo{
+	margin: 140px auto 15px auto !important;
+}
+/* .control-label{
+	color: white !important;
+} */
+.portlet-borderless-container{
+	background: none !important;
+}
+.np-label-remmber-color .checkbox{
+	color:white !important;
+}
+.login-container .control-group{
+	margin-bottom: 12px !important;
+}
+#ctvk_column1_0{
+	display: none !important;
+}
+a.taglib-icon:focus .taglib-text, a.taglib-icon:hover .taglib-text{
+	text-decoration: none !important;
+}
+.portlet-borderless-container{
+	background: none !important;
+}
+/* .control-label, .checkbox{
+	color:white !important;
+} */
+.login-container .control-group{
+	margin-bottom: 12px !important;
+}
+#ctvk_column1_0{
+	display: none !important;
+}
+a.taglib-icon:focus .taglib-text, a.taglib-icon:hover .taglib-text{
+	text-decoration: none !important;
+}
+
+.np-label-remember label{ font-size:13px; font-weight:bold;}
+
+.np-forgot-iconfix01{ font-size:13px !important; line-height:25px;}
+.np-forgot-iconfix01 .taglib-icon img{ display:none; }
+.np-forgot-iconfix01 a{ color:#fff !important; padding-top:2px; font-weight:bold;}
+.np-forgot-iconfix01 a:hover{ color:#fff !important; text-decoration:underline;}
+.np-forgot-iconfix01 .taglib-icon-list li{ margin-top:-7px;}
+
+
+/*login customization css end*/
+   
+/*validation custom css start*/
+.np-input .error .form-validator-stack{
+	color:#fff !important;
+	font-family: 'Open Sans' !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+    src: local('Open Sans Light'), local('OpenSans-Light'), url(http://fonts.gstatic.com/s/opensans/v10/DXI1ORHCpsQm3Vp6mXoaTY0Uz7fbu6RM5MPetubMKio.woff2) format('woff2') !important;
+    unicode-range: U+02BC, U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200B-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB !important;
+}
+.np-label-remember-color .checkbox{color: #fff !important;font-weight: 500;font-size: 13px;}
+/*validation custom css end*/
+
+.custom-logo .site-name {
+	display:none !important;
+	visibility:hidden !important;
+}
+
+/*document style START*/
+.display-style-buttons-container .dropdown-toggle.direction-down.max-display-items-15.btn.select{
+	border-radius: 20px !important;
+}
+.display-style-buttons-container .dropdown-toggle .caret{
+	border-bottom-color: #000 !important;
+    border-top-color: #000 !important;
+    margin-left: 5px !important;
+    margin-top: 8px !important;
+}
+.folder-display-style .nav.nav-list.well{
+	padding-top: 10px;
+}
+.folder-display-style .app-view-navigation-entry.folder.active{
+	margin-top: 10px;
+}
+/*document style end*/
+
+
+.folder-display-style .aui .nav .active .dropdown-toggle .caret{
+	display: none !important;
+}
+
+.folder-display-style .app-view-navigation-entry.folder.active:after {
+  content: "";
+  background: url(../images/pkr-menu-aero.png);
+  opacity:1;
+  top: 0; 
+  right: -32px;
+  position: absolute;
+  z-index: 2; width:17px; height:33px; color:#fff !important; 
+}
+
+.folder-display-style .app-view-navigation-entry.folder a, .folder-display-style .app-view-navigation-entry.folder i{ color:#555555 !important;}
+.folder-display-style .app-view-navigation-entry.folder.active a, .folder-display-style .app-view-navigation-entry.folder.active i{ color:#ffffff !important;}
+
+.aui a{
+    font-weight: 500 !important;
+}
+.unicef-site-name{
+	color: #fff;
+}
+.np-portlate-fix02 .taglib-header { background-color:#8CC540; border-bottom:0px !important;}
+.np-portlate-fix02 .taglib-header .header-title{ color:#FFF;}
+.navbar-static-top { border-width:0px !important;}
+.aui .navbar-fixed-top .navbar-inner, .aui .navbar-static-top .navbar-inner {border-width:0px !important;}
+
+.has-js .label_check,
+.has-js .label_radio { padding:10px 0 10px 75px !important; font:normal 18px/30px Arial, Helvetica, sans-serif; color:#fff !important; cursor:pointer; width: 195px;padding: 5px 0 10px 45px !important; margin: 0 auto !important; }
+.has-js label, .has-js label > label{color:#FFF !important; font:normal 18px/30px Arial, Helvetica, sans-serif !important; color:#fff !important;}
+.has-js .label_radio { background: url(../images/radio-off.png) no-repeat; }
+.has-js .label_check { background: url(../images/check-off.png) no-repeat; }
+.has-js label.c_on { background: url(../images/check-on.png) no-repeat; }
+.has-js label.r_on { background: url(../images/radio-on.png) no-repeat; }
+.has-js .label_check input,
+.has-js .label_radio input { position: absolute; left: -9999px; }
+
+.np-custome-container01 #hrefFm{ display:none !important;}
+
+
+@media only screen and (min-width:300px) and (max-width:767px) {
+.aui body{  padding-left:0 !important; padding-right:0 !important;}
+}
+@media only screen and (min-width:768px) and (max-width:2500px) {
+#footer{ position: fixed; left:0; right:0; bottom:0;} 
+.np-custome-container01 #content{ margin-bottom:52px;}
+}
+
+
+.ust-form-tagbox{ border:none;}
+.aui .ust-form-tagbox .btn {
+  
+ display: inline-block;
+*display:inline;
+*zoom:1;
+ padding: 4px 12px;
+ margin-bottom: 0;
+ margin-right: 12px;
+ font-size: 14px;
+ line-height: 20px;
+ text-align: center;
+ vertical-align: middle;
+ cursor: pointer;
+ color: #2698d6;
+ font-family:'roboto-bold',Arial, Helvetica, sans-serif !important;
+ text-shadow: none !important;
+ background-color:#fff !important;
+  background-image: none !important;
+ background-repeat: no-repeat;
+ background-position:top !important;
+  border-color:transparent !important;
+  border:0 !important;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0), 0 1px 2px rgba(0,0,0,0.0) !important;
+ -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,0), 0 1px 2px rgba(0,0,0,0.0)!important ;
+ box-shadow: inset 0 1px 0 rgba(255,255,255,0), 0 1px 2px rgba(0,0,0,0.0)!important;
+  }
+.aui .ust-form-tagbox .btn:hover{ color:#333 !important;}
+
+
+/*
+**
+** Applying OS/i :
+** by
+** @ Mahendra Panchal
+** 	
+*/
+
+/* 	Idea scrum changes 	*/
+.scrumanything-to-ideascrum-box1 {
+	width:20%;
+	float:left;
+}
+.scrumanything-to-ideascrum-box2 {
+	width:80%;
+	float:left;
+}
+
+.ku-m-box {
+	padding:10px 0px;
+}
+
+
+
+

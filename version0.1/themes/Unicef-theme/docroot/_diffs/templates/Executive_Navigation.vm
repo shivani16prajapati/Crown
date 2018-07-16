@@ -1,0 +1,50 @@
+<div class="ust-newmenu-mainbox clearfix n-collapse" id="ust-menu-layer">
+  <div class="ust-newmenu-title01 clearfix">
+    <div class="ust-nm-title01-box1">MENU</div>
+    <div class="ust-nm-title01-box2"><a href="#" class="ust-menu-fix01" data-toggle="n-collapse" data-target="#ust-menu-layer" >close</a></div>
+  </div>
+  
+  <div class="clearfix">
+	    <div class="ust-nm-exbox01">
+      		<div class="ust-nm-title02">OPTIMIZE:Strategy & Portfolio</div>
+      		<div class="ust-nm-icons"><img src="$images_folder/ust-menu-icon-04.png"></div>
+			<div class="ust-nm-link01">
+	      		<a href="/group/guest/innometrics-dashboard">Innometrics Dashboard</a>
+	      		<a href="/group/guest/pivot-manager">Pivot manager</a>
+	      		<a href="/group/guest/pivot-manager">Stage Gate Manager</a>
+	      		<a href="/group/guest/pivot-manager">Uncertainty Roadmap</a>
+	      		<a href="/group/guest/disruption-map">Disruption Mapping</a>
+	      		<a href="/group/guest/pivot-manager">Idea Inventory</a>
+	  		</div>		      
+		</div>
+		<div class="ust-nm-exbox02">
+	        <div class="ust-nm-title02">CREATE:Ideation & Creativity</div>
+		    <div class="ust-nm-icons"><img src="$images_folder/ust-menu-icon-01.png"></div>
+			<div class="ust-nm-link01">
+	      		<a href="/group/guest/submit-an-idea">Submit an Idea</a>
+	      		<a href="/group/guest/launch-a-challenge">Launch a Challenge</a>
+	      		<a href="/group/guest/pivot-manager">Idea Inventory</a>
+	      		<a href="/group/guest/solution-generator">Solution Generator</a>
+	      		<a href="/group/guest/patentability-test">Patentability Test</a>
+	      		<a href="/group/guest/idea-machine">IdeaMachine</a>
+			</div>		      
+		</div>
+		
+		<div class="ust-nm-exbox03">
+	        <div class="ust-nm-title02">COLLABRATE:Execution & Delivery</div>
+			<div class="ust-nm-icons"><img src="$images_folder/ust-menu-icon-03.png"></div>
+			<div class="ust-nm-link01">
+	      		<a href="/group/guest/pivot-manager">My Innovation</a>
+	      		<a href="/group/guest/workflow">My Workflow Fusion</a>
+	      		<a href="/group/guest/messages">My Messages</a>
+	      		<a href="/group/guest/calendar">My Calendar</a>
+	      		<a href="/group/guest/connections">My Connections</a>
+	      		<a href="/group/guest/scrum-anything">My IdeaScrums</a>
+	  		</div>		      
+		</div>
+	</div>
+	<div class="clearfix" style="text-align:center;"> 
+		<a href = "#"class="ust-nm-ex-button01 hvr-float-shadow">Tools</a>
+	</div>
+</div>	
+

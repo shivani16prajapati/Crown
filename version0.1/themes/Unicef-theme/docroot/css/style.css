@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* Simple fluid media
+   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/ 
+
+*{ box-sizing:border-box !important; }
+.login-container{ width:100% !important; max-width:420px !important; margin:0 auto !important;    }
+.main-logo{ width:308px !important; height:54px !important; background:url(../images/logo.png) left top no-repeat !important; display:block !important; margin:10px auto 45px auto !important; }
+
+.np-form-control {
+	display: block !important;
+	width: 100% !important;
+	height: 40px !important;
+	padding: 6px 12px !important;
+	font-size: 14px !important;
+	line-height: 1.42857143 !important;
+	color: #555 !important;
+	border:1px solid #FFF !important;
+	background-color: rgba(255, 255, 255, 0.75) !important;
+	background-image: none !important;
+	
+	border-radius: 4px !important;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075) !important;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075) !important;
+	-webkit-transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+	-o-transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+	transition: all ease-in-out .15s, box-shadow ease-in-out .15s !important;
+}
+.np-form-control:focus {
+	border: 1px solid rgba(255, 255, 255, 0) !important;
+	outline: 0; background-color:#FFF !important;
+ }
+.np-input-button{ text-align:center !important;}
+.np-input{ margin-bottom:10px !important;}
+
+.np-submit{ background:none !important; font:bold 17px/30px Arial, Helvetica, sans-serif !important; color:#fff !important; border:2px solid #d8c7ac !important; border-radius:40px !important; -webkit-border-radius:40px !important; padding:4px 45px !important; outline:none !important; margin:25px auto 25px auto !important; } 
+ 
+.np-submit:hover{  background-color:rgba(216,199,172,0.2) !important;}
+ 
+.np-lable-fix{ float:left !important;}
+.np-lable-fix span{ float:left !important; margin:4px 7px 0 0 !important;} 
+.np-lable-fix span+span{ float:left !important; margin:2px 4px 0 0 !important; color:#fff !important;} 
+.np-forgot-link{ font:nornmal 15px/25px 'roboto', Arial, Helvetica, sans-serif !important; float:right !important;}
+.np-forgot-link a{ color:#FFF !important; text-decoration:none !important; padding:0 0 0 18px !important; background:url(../images/aero.png) 2px 6px no-repeat !important;}
+.np-forgot-link a:hover{text-decoration: none !important;}
+ 
+.login-bottom-back{ background:url(../images/link-back.png) center top no-repeat !important; background-size:cover !important; min-height:40px !important; padding-top:10px !important;} 
+ 
+.np-footer{ position:absolute !important; text-align:center !important; bottom:5px !important; left:0px !important; right:0px !important; color:#FFF !important; font:normal 14px/25px 'roboto', Arial, Helvetica, sans-serif !important;}
+ 
+ 
+@media only screen and (min-width:300px) and (max-width:600px) {
+ 
+.login-container{ padding:0 15px !important;}
+.main-logo{ width:250px !important; height:43px !important; background-size:cover !important; margin-top:40px !important;  }
+
+
+}
+
+@media (min-height:640px) {
+.main-logo{margin-top:140px !important;}
+}
+
+
+@media (min-height: 850px) {
+.main-logo{margin-top:200px !important;}
+}
+.aui body{background-color: none !important;}
+
+#navigation{
+	background-color: #555 !important;
+}
+#navigation ul{
+	display: inline-block;
+	margin: 0;
+	background-color: #555;
+	padding: 0;
+}
+#navigation li{
+	float: left;
+	padding: 5px 20px 3px 5px;
+}
+#navigation li a{
+	color: whitesmoke;
+}

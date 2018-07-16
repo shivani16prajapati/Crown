@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- Data Source -->
+	
+	<!-- Session Factory -->
+	
+	
+	<context:annotation-config />
+	
+	<context:component-scan base-package="com.unicef.dao" />
+	<context:component-scan base-package="com.unicef.service" />
+	<context:component-scan base-package="com.unicef.util" />
+	<context:property-placeholder location="/WEB-INF/spring.properties" />
+	
+	<!--class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"> -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"> 
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.unicef.domain.Idea</value>
+				<value>com.unicef.domain.IdeaAttachement</value>
+				<value>com.unicef.domain.IdeaEndorsement</value>
+				<value>com.unicef.domain.Like</value>
+				<value>com.unicef.domain.IdeaComment</value>
+				<value>com.unicef.domain.IdeaHistory</value>
+				<value>com.unicef.domain.IdeaView</value>
+				<value>com.unicef.domain.Solution</value>
+				<value>com.unicef.domain.SolutionLike</value>
+				<value>com.unicef.domain.SolutionComment</value>
+				<value>com.unicef.domain.SolutionAnswer</value>
+				<value>com.unicef.domain.SolutionView</value>
+				<value>com.unicef.domain.SolutionAnswerVote</value>
+				<value>com.unicef.domain.SolutionAnswerComment</value>
+				<value>com.unicef.domain.IdeaScrum</value>
+				<value>com.unicef.domain.SocialWorkflow</value>
+				<value>com.unicef.domain.IdeaRateCriteria</value>
+				<value>com.unicef.domain.IdeaRate</value>
+				<value>com.unicef.domain.WorkflowLike</value>
+				<value>com.unicef.domain.WorkflowComment</value>
+				<value>com.unicef.domain.IdeaCommentVote</value>
+				<value>com.unicef.domain.IdeaScrumDiscussion</value>
+				<value>com.unicef.domain.Sprint</value>
+				<value>com.unicef.domain.ScrumDiscussionThanks</value>
+				<value>com.unicef.domain.SolutionScrumDiscussion</value>
+				<value>com.unicef.domain.SolutionScrumThanks</value>
+				<value>com.unicef.domain.LaunchAChallenge</value>
+				<value>com.unicef.domain.Sponsor</value>
+				<value>com.unicef.domain.Scrum_Discussion_Like</value>
+				<value>com.unicef.domain.TeamMember</value>
+				<value>com.unicef.domain.Utility</value>
+				<value>com.unicef.domain.PivotRiskUtility</value>
+				<value>com.unicef.domain.UserData</value>
+				<value>com.unicef.domain.UserFeed</value>
+				<value>com.unicef.domain.Video</value>
+							
+			</list>
+		</property>
+		<property name="hibernateProperties">
+		   <props>
+			    <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			    <prop key="hibernate.show_sql">false</prop>
+			    <prop key="hibernate.hbm2ddl.auto">update</prop>
+		   </props>
+	  	</property>
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- this MessageSource is being used in a web application -->
+    <bean id="messageSource"
+        class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+    
+    <bean id="applicationContextProvider" class="com.unicef.portlet.idea.ApplicationContextProvider"/>
+    
+    
+		
+</beans>

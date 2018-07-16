@@ -1,0 +1,25 @@
+<div class="np-portlate-fix01">
+  <div class="ust-searchbox clearfix">
+    <div class="ust-searchbox-left">
+      <div class="ust-searchbox-searcharea clearfix">
+        <div class="ust-searchbox-link01"><a href="javascript:getIdeas('latest');" style="color: #FFF !important;">LATEST IDEAS</a></div>
+        <div class="ust-searchbox-link01"><a href="javascript:getIdeas('hottest');" style="color: #FFF !important;">HOTTEST IDEAS</a></div>
+        <div class="ust-searchbox-input01">
+		   $theme.runtime("OS/innovation-Theme-Search_WAR_Unicefportlet", '', $velocityPortletPreferences.toString())
+        </div>
+      </div>
+    </div>
+    <div class="ust-searchbox-right"><a href="/group/guest/submit-an-idea"><img src="$images_folder/ust-search-right-part.png" ></a></div>
+  </div>
+</div>
+
+
+
+<script  type="text/javascript">
+
+	function getIdeas(idea){
+		displayHomePageIdeaIdea(idea);
+		$('#idea').val(idea);
+	}
+
+</script>

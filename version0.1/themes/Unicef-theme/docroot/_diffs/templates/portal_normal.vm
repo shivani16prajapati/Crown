@@ -1,0 +1,7 @@
+#parse ($init)
+
+#if ($is_signed_in)
+	#parse ("$full_templates_path/default_home.vm")
+#else
+	#parse ("$full_templates_path/custom_home.vm")
+#end

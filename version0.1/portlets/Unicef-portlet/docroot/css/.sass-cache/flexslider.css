@@ -1,0 +1,1100 @@
+/*
+ * jQuery FlexSlider v2.3.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Ville Ristim?ki (@villeristi)
+ * 
+ */
+/* ====================================================================================================================
+ * FONT-FACE
+ * ====================================================================================================================*/
+@font-face {
+  font-family: 'flexslider-icon';
+  src: url("fonts/flexslider-icon.eot");
+  src: url("fonts/flexslider-icon.eot?#iefix") format("embedded-opentype"), url("fonts/flexslider-icon.woff") format("woff"), url("fonts/flexslider-icon.ttf") format("truetype"), url("fonts/flexslider-icon.svg#flexslider-icon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/* ====================================================================================================================
+ * RESETS
+ * ====================================================================================================================*/
+.flex-container a:hover,
+.flex-slider a:hover,
+.flex-container a:focus,
+.flex-slider a:focus {
+  outline: none; }
+
+.slides,
+.flex-control-nav,
+.flex-direction-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.flex-pauseplay span {
+  text-transform: capitalize; }
+
+/* ====================================================================================================================
+ * BASE STYLES
+ * ====================================================================================================================*/
+.flexslider {
+  margin: 0;
+  padding: 0; }
+
+.flexslider .slides > li {
+  display: none;
+  float: left;
+  -webkit-backface-visibility: hidden; }
+
+.flexslider .slides img {
+  width: 100%;
+  display: block; }
+
+.flexslider .slides:after {
+  content: "\0020";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0; }
+
+html[xmlns] .flexslider .slides {
+  display: block; }
+
+* html .flexslider .slides {
+  height: 1%; }
+
+.no-js .flexslider .slides > li:first-child {
+  display: block; }
+
+/* ====================================================================================================================
+ * DEFAULT THEME
+ * ====================================================================================================================*/
+.flexslider {
+  margin: 0;
+  background: #fff;
+  border: none;
+  position: relative;
+  zoom: 1;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 0 80px; }
+
+.flexslider .slides {
+  zoom: 1; }
+
+.flex-viewport {
+  max-height: 2000px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease; }
+
+.loading .flex-viewport {
+  max-height: 300px; }
+
+.carousel li {
+  margin-right: 0; }
+
+.flex-direction-nav {
+  *height: 0; }
+
+.flex-direction-nav a {
+  text-decoration: none;
+  display: block;
+  width: 80px;
+  height: 120px;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  overflow: hidden;
+  opacity: 1;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out; }
+
+.flex-direction-nav a:before {
+  font-family: "flexslider-icon";
+  font-size: 40px;
+  display: inline-block; }
+
+.flex-direction-nav .flex-prev {
+  left: 0px;
+  top: 15px; }
+
+.flex-direction-nav .flex-next {
+  right: 0px;
+  top: 15px;
+  text-align: right; }
+
+.flexslider:hover .flex-direction-nav .flex-prev {
+  left: 0px; }
+
+.flexslider:hover .flex-direction-nav .flex-prev:hover {
+  opacity: 0.5; }
+
+.flexslider:hover .flex-direction-nav .flex-next {
+  right: 0px; }
+
+.flexslider:hover .flex-direction-nav .flex-next:hover {
+  opacity: 0.5; }
+
+.flex-direction-nav .flex-disabled {
+  /*  opacity: 0!important;
+    filter: alpha(opacity=0);
+    cursor: default;*/ }
+
+.flex-pauseplay a {
+  display: block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  opacity: 0.8;
+  z-index: 10;
+  overflow: hidden;
+  cursor: pointer;
+  color: #000; }
+
+.flex-pauseplay a:before {
+  font-family: "flexslider-icon";
+  font-size: 20px;
+  display: inline-block;
+  content: '\f004'; }
+
+.flex-pauseplay a:hover {
+  opacity: 1; }
+
+.flex-pauseplay a .flex-play:before {
+  content: '\f003'; }
+
+.flex-control-nav {
+  width: 100%;
+  position: absolute;
+  bottom: -40px;
+  text-align: center; }
+
+.flex-control-nav li {
+  margin: 0 6px;
+  display: inline-block;
+  zoom: 1;
+  *display: inline; }
+
+.flex-control-paging li a {
+  width: 11px;
+  height: 11px;
+  display: block;
+  background: #666;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-indent: -9999px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px; }
+
+.flex-control-paging li a:hover {
+  background: #333;
+  background: rgba(0, 0, 0, 0.7); }
+
+.flex-control-paging li a.flex-active {
+  background: #000;
+  background: rgba(0, 0, 0, 0.9);
+  cursor: default; }
+
+.flex-control-thumbs {
+  margin: 5px 0 0;
+  position: static;
+  overflow: hidden; }
+
+.flex-control-thumbs li {
+  width: 25%;
+  float: left;
+  margin: 0; }
+
+.flex-control-thumbs img {
+  width: 100%;
+  display: block;
+  opacity: .7;
+  cursor: pointer;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease; }
+
+.flex-control-thumbs img:hover {
+  opacity: 1; }
+
+.flex-control-thumbs .flex-active {
+  opacity: 1;
+  cursor: default; }
+
+/* ====================================================================================================================
+ * RESPONSIVE
+ * ====================================================================================================================
+@media screen and (max-width: 860px) {
+  .flex-direction-nav .flex-prev {
+    opacity: 1;
+    left: 10px;
+  }
+  .flex-direction-nav .flex-next {
+    opacity: 1;
+    right: 10px;
+  }
+}
+*/
+.np-sliderfix {
+  overflow: hidden; }
+
+.np-box01 {
+  display: block;
+  border: 1px solid #cdcdcd;
+  border-right: none;
+  background-color: #ededed; }
+
+.np-box01.np-active-blue, .np-box01.np-active-red {
+  background-color: #FFF; }
+
+.np-box01:last-child {
+  border-right: 1px solid #cdcdcd; }
+
+.flex-prev {
+  width: 29px;
+  height: 29px;
+  display: block;
+  background: url(../images/left-aero.png) left top no-repeat;
+  background-size: cover;
+  text-indent: -500000px;
+  overflow: hidden;
+  text-align: left !important; }
+
+.flex-next {
+  width: 29px;
+  height: 29px;
+  display: block;
+  background: url(../images/right-aero.png) left top no-repeat;
+  text-indent: -500000px;
+  background-size: cover;
+  overflow: hidden;
+  text-align: left !important; }
+
+.np-box-text1 {
+  font: normal 11px/20px Arial, Helvetica, sans-serif;
+  color: #62BFFF;
+  text-align: center;
+  background-color: #d9d9d9;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 3px;
+  overflow: hidden; }
+
+.np-box-text2 {
+  font: normal 11px/20px Arial, Helvetica, sans-serif;
+  color: #fb5252;
+  text-align: center;
+  background-color: #d9d9d9;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 3px;
+  overflow: hidden; }
+
+.np-active-blue .np-box-text1 {
+  background-color: #000;
+  color: #62BFFF; }
+
+.np-active-red .np-box-text2 {
+  background-color: #000;
+  color: #fb5252; }
+
+.np-red-hint {
+  color: #cc0c0c; }
+
+.np-sl-content-box {
+  position: relative; }
+
+.np-sl-iconbox {
+  text-align: center;
+  min-height: 36px;
+  margin: 5px 0px; }
+
+.np-sl-iconbox img {
+  width: auto !important;
+  height: auto;
+  margin: 0 auto; }
+
+.np-sl-textbox {
+  font: bold 25px/36px Arial, Helvetica, sans-serif;
+  color: #000;
+  text-align: center;
+  margin: 5px 0px;
+  letter-spacing: -1px; }
+
+.np-sl-graphbox {
+  text-align: center;
+  min-height: 36px;
+  margin: 5px 0px; }
+
+.np-sl-graphbox img {
+  width: auto !important;
+  height: auto;
+  margin: 0 auto; }
+
+.np-slide-fix002 li {
+  margin: 0 8px 0 0 !important; }
+
+.np-sl-iconbox02 {
+  text-align: left;
+  min-height: 36px;
+  margin: 5px 0 5px 8px;
+  float: left; }
+
+.np-sl-iconbox02 img {
+  width: auto !important;
+  height: auto; }
+
+.np-sl-content-box02 {
+  padding: 14px 3px 8px 3px; }
+
+.np-sl-content-box03 {
+  float: left; }
+
+.np-sl-textbox02 {
+  font: normal 13px/20px Arial, Helvetica, sans-serif;
+  margin: 4px 0px 4px 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100px; }
+
+.np-sl-textbox03 {
+  font: bold 20px/20px Arial, Helvetica, sans-serif;
+  margin: 4px 0px 4px 5px; }
+
+.np-hint-fix {
+  width: 100%;
+  float: left;
+  font: normal 13px/20px Arial, Helvetica, sans-serif; }
+
+.np-link-box {
+  background-color: #8CC540;
+  font: normal 20px/40px roboto-bold, arial;
+  color: #fff;
+  padding: 8px 5px;
+  margin: 12px 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0; }
+
+.np-link-lefttitle1 {
+  float: left;
+  font: bold 20px/32px Arial, Helvetica, sans-serif;
+  color: #1B7CE9; }
+
+.np-link-rightlink {
+  float: right; }
+
+.np-link-rightlink-part1 {
+  float: left;
+  border: 1px solid #adadad;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #e8e8e8;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, white 0%, #e8e8e8 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #e8e8e8));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, white 0%, #e8e8e8 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, white 0%, #e8e8e8 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, white 0%, #e8e8e8 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=0 );
+  /* IE6-9 */ }
+
+.np-link-rightlink-part1 a {
+  font: normal 13px/20px Arial, Helvetica, sans-serif;
+  color: #333;
+  text-decoration: none;
+  border-right: 1px solid #CCC;
+  padding: 5px 8px;
+  float: left; }
+
+.np-link-rightlink-part1 a:hover, .np-link-rightlink-part1 .active {
+  background: #0e0e0e;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0e0e0e), color-stop(100%, #7d7e7d));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #0e0e0e 0%, #7d7e7d 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 );
+  /* IE6-9 */
+  color: #FFF; }
+
+.np-link-rightlink-part2 {
+  float: left;
+  margin-right: 5px;
+  border: 1px solid #adadad;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #e8e8e8;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, white 0%, #e8e8e8 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #e8e8e8));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, white 0%, #e8e8e8 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, white 0%, #e8e8e8 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, white 0%, #e8e8e8 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #ffffff 0%, #e8e8e8 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e8e8e8',GradientType=0 );
+  /* IE6-9 */ }
+
+.np-link-rightlink-part2 a {
+  text-decoration: none;
+  width: 32px;
+  height: 30px;
+  display: block;
+  overflow: hidden;
+  text-indent: -10000px;
+  background: url(../images/cale-icon.png) -1px -1px no-repeat; }
+
+.np-link-rightlink-part2:hover {
+  background: #0e0e0e;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0e0e0e), color-stop(100%, #7d7e7d));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #0e0e0e 0%, #7d7e7d 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 );
+  /* IE6-9 */
+  color: #FFF; }
+
+.np-link-rightlink-part2 a:hover {
+  background: url(../images/cale-icon.png) -1px -50px no-repeat; }
+
+.np-link-rightlink-part2-active {
+  float: left;
+  margin-right: 5px;
+  border: 1px solid #adadad;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #0e0e0e;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0e0e0e), color-stop(100%, #7d7e7d));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #0e0e0e 0%, #7d7e7d 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #0e0e0e 0%, #7d7e7d 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 );
+  /* IE6-9 */
+  color: #FFF; }
+
+.np-link-rightlink-part2-active a {
+  background: url(../images/cale-icon.png) -1px -50px no-repeat;
+  text-decoration: none;
+  width: 32px;
+  height: 30px;
+  display: block;
+  overflow: hidden;
+  text-indent: -10000px; }
+
+.np-link-rightlink-part1 a:last-child {
+  border-right: none; }
+
+.np-sl-box001 {
+  position: absolute;
+  right: 1px;
+  top: 0; }
+
+.np-sl-box002 {
+  float: right;
+  font: normal 10px/10px Arial, Helvetica, sans-serif;
+  letter-spacing: -1px;
+  color: #666; }
+
+.np-sl-box003 {
+  float: right; }
+
+.np-sl-box003 img {
+  width: 11px;
+  height: 11px; }
+
+.np-box02 {
+  min-height: 90px;
+  background: url(../images/bottom-box-bg.gif) left top no-repeat; }
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  zoom: 1; }
+
+/* ====================================================================================================================
+ * slider  patch
+ * ====================================================================================================================
+*/
+.flexslider2 {
+  margin: 0;
+  padding: 0; }
+
+.flexslider2 .slides > li {
+  display: none;
+  float: left;
+  -webkit-backface-visibility: hidden; }
+
+.flexslider2 .slides img {
+  width: 100%;
+  display: block; }
+
+.flexslider2 .slides:after {
+  content: "\0020";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0; }
+
+html[xmlns] .flexslider2 .slides {
+  display: block; }
+
+* html .flexslider2 .slides {
+  height: 1%; }
+
+.no-js .flexslider2 .slides > li:first-child {
+  display: block; }
+
+.flexslider2 {
+  margin: 0;
+  background: #fff;
+  border: none;
+  position: relative;
+  zoom: 1;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 0 50px; }
+
+.flexslider2 .slides {
+  zoom: 1; }
+
+.flexslider2 .flex-prev, .flexslider2 .flex-next {
+  width: 50px;
+  height: 75px;
+  top: 30px; }
+
+.flexslider2:hover .flex-direction-nav .flex-prev {
+  left: 0px; }
+
+.flexslider2:hover .flex-direction-nav .flex-prev:hover {
+  opacity: 0.5; }
+
+.flexslider2:hover .flex-direction-nav .flex-next {
+  right: 0px; }
+
+.flexslider2:hover .flex-direction-nav .flex-next:hover {
+  opacity: 0.5; }
+
+.np-daseboard-slider-icon {
+  display: block;
+  padding-right: 180px;
+  background: url(../images/c4d-logo.png) right 4px no-repeat; }
+
+/*-------------------------------------*\
+	HINT.css - A CSS tooltip library
+\*-------------------------------------*/
+/**
+ * HINT.css is a tooltip library made in pure CSS.
+ *
+ * Source: https://github.com/chinchang/hint.css
+ * Demo: http://kushagragour.in/lab/hint/
+ *
+ * Release under The MIT License
+ *
+ */
+/**
+ * source: hint-core.scss
+ *
+ * Defines the basic styling for the tooltip.
+ * Each tooltip is made of 2 parts:
+ * 	1) body (:after)
+ * 	2) arrow (:before)
+ * 
+ * Classes added:
+ * 	1) hint
+ */
+.hint, [data-hint] {
+  position: relative;
+  display: inline-block;
+  /**
+   * tooltip arrow
+   */
+  /**
+   * tooltip body
+   */ }
+
+.hint:before, .hint:after, [data-hint]:before, [data-hint]:after {
+  position: absolute;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000000;
+  pointer-events: none;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  transition: 0.3s ease; }
+
+.hint:hover:before, .hint:hover:after, .hint:focus:before, .hint:focus:after, [data-hint]:hover:before, [data-hint]:hover:after, [data-hint]:focus:before, [data-hint]:focus:after {
+  visibility: visible;
+  opacity: 1; }
+
+.hint:before, [data-hint]:before {
+  content: '';
+  position: absolute;
+  background: transparent;
+  border: 6px solid transparent;
+  z-index: 1000001; }
+
+.hint:after, [data-hint]:after {
+  content: attr(data-hint);
+  background-color: #000;
+  background-color: black;
+  color: white;
+  padding: 8px 10px;
+  font-size: 11px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  line-height: 11px;
+  white-space: nowrap;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); }
+
+/**
+ * source: hint-position.scss
+ *
+ * Defines the positoning logic for the tooltips.
+ *
+ * Classes added:
+ * 	1) hint--top
+ * 	2) hint--bottom
+ * 	3) hint--left
+ * 	4) hint--right
+ */
+/**
+ * set default color for tooltip arrows
+ */
+.hint--top:before {
+  border-top-color: #000; }
+
+.hint--topr:before {
+  border-top-color: #000; }
+
+.hint--bottom:before {
+  border-bottom-color: #000; }
+
+.hint--bottomlr:before {
+  border-bottom-color: #000; }
+
+.hint--left:before {
+  border-left-color: #000; }
+
+.hint--right:before {
+  border-right-color: #000; }
+
+/**
+ * top tooltip
+ */
+.hint--top:before {
+  margin-bottom: -12px;
+  margin-left: -6px; }
+
+.hint--top:after {
+  margin-left: -18px; }
+
+.hint--top:before, .hint--top:after {
+  bottom: 100%;
+  left: 2%; }
+
+.hint--top:hover:after, .hint--top:hover:before, .hint--top:focus:after, .hint--top:focus:before {
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  transform: translateY(-10px); }
+
+/**
+ * topr tooltip
+ */
+.hint--topr:before {
+  margin-bottom: -12px;
+  margin-left: -6px; }
+
+.hint--topr:after {
+  margin-left: -18px; }
+
+.hint--topr:before, .hint--topr:after {
+  bottom: 100%;
+  left: 20%; }
+
+.hint--topr:hover:after, .hint--topr:hover:before, .hint--topr:focus:after, .hint--topr:focus:before {
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  transform: translateY(-10px); }
+
+/**
+ * bottom tooltip
+ */
+.hint--bottom:before {
+  margin-top: -12px; }
+
+.hint--bottom:after {
+  margin-left: -18px; }
+
+.hint--bottom:before, .hint--bottom:after {
+  top: 100%;
+  left: 50%; }
+
+.hint--bottom:hover:after, .hint--bottom:hover:before, .hint--bottom:focus:after, .hint--bottom:focus:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px); }
+
+/**
+ * bottomlr tooltip
+ */
+.hint--bottomlr:before {
+  margin-top: -12px; }
+
+.hint--bottomlr:after {
+  margin-right: -18px; }
+
+.hint--bottomlr:after {
+  top: 100%;
+  right: 50%; }
+
+.hint--bottomlr:before {
+  top: 100%;
+  right: 20px; }
+
+.hint--bottomlr:hover:after, .hint--bottomlr:hover:before, .hint--bottomlr:focus:after, .hint--bottomlr:focus:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px); }
+
+/**
+ * right tooltip
+ */
+.hint--right:before {
+  margin-left: -12px;
+  margin-bottom: -6px; }
+
+.hint--right:after {
+  margin-bottom: -14px; }
+
+.hint--right:before, .hint--right:after {
+  left: 100%;
+  bottom: 50%; }
+
+.hint--right:hover:after, .hint--right:hover:before, .hint--right:focus:after, .hint--right:focus:before {
+  -webkit-transform: translateX(8px);
+  -moz-transform: translateX(8px);
+  transform: translateX(8px); }
+
+/**
+ * left tooltip
+ */
+.hint--left:before {
+  margin-right: -12px;
+  margin-bottom: -6px; }
+
+.hint--left:after {
+  margin-bottom: -14px; }
+
+.hint--left:before, .hint--left:after {
+  right: 100%;
+  bottom: 50%; }
+
+.hint--left:hover:after, .hint--left:hover:before, .hint--left:focus:after, .hint--left:focus:before {
+  -webkit-transform: translateX(-8px);
+  -moz-transform: translateX(-8px);
+  transform: translateX(-8px); }
+
+/**
+ * source: hint-color-types.scss
+ *
+ * Contains tooltips of various types based on color differences.
+ *
+ * Classes added:
+ * 	1) hint--error
+ * 	2) hint--warning
+ * 	3) hint--info
+ * 	4) hint--success
+ *
+ */
+/**
+ * Error
+ */
+.hint--error:after {
+  background-color: #b34e4d; }
+
+.hint--error.hint--top:before {
+  border-top-color: #b34e4d; }
+
+.hint--error.hint--bottom:before {
+  border-bottom-color: #b34e4d; }
+
+.hint--error.hint--bottomlr:before {
+  border-bottom-color: #b34e4d; }
+
+.hint--error.hint--left:before {
+  border-left-color: #b34e4d; }
+
+.hint--error.hint--right:before {
+  border-right-color: #b34e4d; }
+
+/**
+ * Warning
+ */
+.hint--warning:after {
+  background-color: #d40707; }
+
+.hint--warning.hint--top:before {
+  border-top-color: #d40707; }
+
+.hint--warning.hint--bottom:before {
+  border-bottom-color: #d40707; }
+
+.hint--warning.hint--bottomlr:before {
+  border-bottom-color: #d40707; }
+
+.hint--warning.hint--left:before {
+  border-left-color: #d40707; }
+
+.hint--warning.hint--right:before {
+  border-right-color: #d40707; }
+
+/**
+ * Info
+ */
+.hint--info:after {
+  background-color: #3986ac; }
+
+.hint--info.hint--top:before {
+  border-top-color: #3986ac; }
+
+.hint--info.hint--bottom:before {
+  border-bottom-color: #3986ac; }
+
+.hint--info.hint--bottomlr:before {
+  border-bottom-color: #3986ac; }
+
+.hint--info.hint--left:before {
+  border-left-color: #3986ac; }
+
+.hint--info.hint--right:before {
+  border-right-color: #3986ac; }
+
+/**
+ * Success
+ */
+.hint--success:after {
+  background-color: #458746; }
+
+.hint--success.hint--top:before {
+  border-top-color: #458746; }
+
+.hint--success.hint--bottom:before {
+  border-bottom-color: #458746; }
+
+.hint--success.hint--bottomlr:before {
+  border-bottom-color: #458746; }
+
+.hint--success.hint--left:before {
+  border-left-color: #458746; }
+
+.hint--success.hint--right:before {
+  border-right-color: #458746; }
+
+/**
+ * source: hint-always.scss
+ *
+ * Defines a persisted tooltip which shows always.
+ *
+ * Classes added:
+ * 	1) hint--always
+ *
+ */
+.hint--always:after, .hint--always:before {
+  opacity: 1;
+  visibility: visible; }
+
+.hint--always.hint--top:after, .hint--always.hint--top:before {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  transform: translateY(-8px); }
+
+.hint--always.hint--bottom:after, .hint--always.hint--bottom:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px); }
+
+.hint--always.hint--left:after, .hint--always.hint--left:before {
+  -webkit-transform: translateX(-8px);
+  -moz-transform: translateX(-8px);
+  transform: translateX(-8px); }
+
+.hint--always.hint--right:after, .hint--always.hint--right:before {
+  -webkit-transform: translateX(8px);
+  -moz-transform: translateX(8px);
+  transform: translateX(8px); }
+
+/**
+ * source: hint-rounded.scss
+ *
+ * Defines rounded corner tooltips.
+ *
+ * Classes added:
+ * 	1) hint--rounded
+ *
+ */
+.hint--rounded:after {
+  border-radius: 4px; }
+
+/**
+ * source: hint-effects.scss
+ *
+ * Defines various transition effects for the tooltips.
+ *
+ * Classes added:
+ * 	1) hint--bounce
+ *
+ */
+.hint--bounce:before, .hint--bounce:after {
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -moz-transition: opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24); }
+
+.hint--top, .hint--bottom, .hint--left, .hint--right {
+  letter-spacing: 0px !important;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.np-pivot-box {
+  background-color: #6766A4;
+  color: #fff;
+  font: normal 20px/40px roboto-bold, arial;
+  padding: 8px 5px;
+  margin: 12px 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0; }
+
+/*  new calender style    */
+.np-nc-link-rightlink-part2 {
+  float: left;
+  margin-right: 5px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin-top: 4px; }
+
+.np-nc-link-rightlink-part2 a {
+  text-decoration: none;
+  width: 32px;
+  height: 30px;
+  display: block;
+  overflow: hidden;
+  text-indent: -10000px;
+  background: url(../images/cale-icon-01.png) -1px -1px no-repeat; }
+
+.np-nc-link-rightlink-part2:hover {
+  color: #FFF; }
+
+.np-nc-link-rightlink-part2 a:hover {
+  background: url(../images/cale-icon.png) -1px -50px no-repeat; }
+
+.np-nc-link-rightlink-part2-active {
+  float: left;
+  margin-right: 5px;
+  border: 1px solid #adadad;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: #0e0e0e;
+  color: #FFF; }
+
+.np-nc-link-rightlink-part2-active a {
+  background: url(../images/cale-icon.png) -1px -50px no-repeat;
+  text-decoration: none;
+  width: 32px;
+  height: 30px;
+  display: block;
+  overflow: hidden;
+  text-indent: -10000px; }
+
+.np-nc-link-rightlink-part1 {
+  float: left;
+  margin-top: 4px; }
+
+.np-nc-link-rightlink-part1 a {
+  font: normal 15px/20px 'roboto', Arial, Helvetica, sans-serif;
+  color: #ffffff !important;
+  text-decoration: none;
+  padding: 5px 8px;
+  float: left; }
+
+.np-nc-link-rightlink-part1 a:hover, .np-nc-link-rightlink-part1 .active {
+  color: #FFF !important; }
+
+.cs-graph-img-fix {
+  text-align: center; }
+
+.cs-graph-img-fix img {
+  margin: 0 auto;
+  margin-bottom: 14px; }
+

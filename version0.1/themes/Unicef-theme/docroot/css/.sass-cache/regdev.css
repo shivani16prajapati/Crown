@@ -1,0 +1,325 @@
+/*------------------------------------*\
+    rgdev JS rgdevigation
+\*------------------------------------*/
+.rgdev * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.rgdev {
+  color: #fff;
+  position: relative;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+  width: 100%;
+  float: left; }
+
+.rgdev-list {
+  text-align: left;
+  margin: 0 auto 0 auto;
+  width: 100%;
+  display: table;
+  padding: 0px; }
+
+.rgdev-item {
+  position: relative;
+  text-align: center;
+  display: table-cell;
+  white-space: nowrap;
+  border-right: 1px solid #4dc6f4;
+  background-color: #ccc; }
+
+.rgdev-item a {
+  display: block;
+  color: #14a8df;
+  padding: 0px 21px 0px 21px;
+  line-height: 44px;
+  height: 44px;
+  text-decoration: none !important; }
+
+/* rgdevigation submenu */
+.rgdev-submenu {
+  display: none;
+  position: absolute;
+  top: 44px;
+  min-width: 230px;
+  z-index: 1000;
+  margin: 0px;
+  padding: 0px; }
+
+.rgdev-submenu-item a {
+  background: #2098d5;
+  text-align: left;
+  border-bottom: 1px solid #1985bd;
+  display: block;
+  line-height: 22px;
+  padding: 8px 15px 8px 15px;
+  text-transform: none; }
+
+.rgdev-submenu-item a:hover {
+  background: #932C77;
+  border-radius: 0px !important; }
+
+.rgdev-text {
+  width: 50%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: #fff;
+  line-height: 44px;
+  text-indent: 15px;
+  font-weight: normal;
+  font-size: 20px;
+  display: none;
+  text-transform: none; }
+
+/*================================================================*/
+.rgdev li a.home_bt {
+  text-decoration: none;
+  background: url(../images/menubg2.png) left top no-repeat;
+  padding: 0px 27px 0px 27px;
+  width: 0px;
+  height: 42px; }
+
+.rgdev li a:hover.home_bt {
+  background: url(../images/menubg2.png) left bottom no-repeat; }
+
+.rgdev li a.active.home_bt {
+  background: url(../images/menubg2.png) left bottom no-repeat; }
+
+#rgdev li a span.home_bt {
+  text-decoration: none;
+  background: url(../images/menubg2.png) right top no-repeat; }
+
+.rgdev li a:hover span {
+  background: url(../images/menubg2.png) right bottom no-repeat;
+  /* DEN : background of menu items during onmouseover (hover state)*/ }
+
+.rgdev li a.active span.home_bt {
+  background: url(../images/menubg2.png) right bottom no-repeat;
+  /* DEN : background of menu items during onmouseover (hover state)*/ }
+
+/*================================================================*/
+/* Mobile rgdevigation */
+.rgdev-mobile {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 7px 12px 7px 12px;
+  margin: 0;
+  color: #fff;
+  border-radius: 4px;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  width: 47px;
+  height: 65px;
+  background: url(../images/login-icon.png) -128px 0px no-repeat;
+  display: block;
+  text-indent: -9999px; }
+
+.rgdev-mobile:hover {
+  opacity: 0.6; }
+
+.rgdev-mobile .icon-bar {
+  display: none !important; }
+
+.rgdev-click {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  cursor: pointer; }
+
+.rgdev-click i {
+  display: block;
+  height: 23px;
+  width: 25px;
+  margin-top: 10px;
+  margin-right: 8px;
+  background: url(../images/down.png) no-repeat top left;
+  background-size: 25px; }
+
+.rgdev-click02 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  cursor: pointer; }
+
+.rgdev-click02 i {
+  display: block;
+  height: 23px;
+  width: 25px;
+  margin-top: 10px;
+  margin-right: 8px;
+  background: url(../images/down.png) no-repeat top left;
+  background-size: 25px; }
+
+.rgdev-rotate {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg); }
+
+/*------------------------------------*\
+    Media Queries
+\*------------------------------------*/
+.rgdev-submenu-item {
+  position: relative;
+  margin: 0px;
+  padding: 0px; }
+
+.rgdev-mobile {
+  display: block; }
+
+.mobile-sub {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  float: none;
+  width: 100%; }
+
+.mobile-sub li {
+  margin: 0px 0px 0px 0px !important;
+  display: block;
+  width: 240px; }
+
+.mobile-sub a {
+  display: block;
+  color: #ffffff !important;
+  padding: 15px 25px;
+  background: #14a8df;
+  border-bottom: solid 1px #ccc; }
+
+.mobile-sub li a.active {
+  color: #fff !important;
+  box-shadow: none; }
+
+.mobile-sub li:hover > a {
+  box-shadow: none; }
+
+.rgdev {
+  width: 100%;
+  padding: 70px 0px 0px 0px !important;
+  margin: 0px 0px; }
+
+.rgdev-list {
+  display: none; }
+
+.rgdev-item {
+  width: 100%;
+  float: none;
+  text-align: left; }
+
+.rgdev-item > a {
+  padding: 13px;
+  line-height: 20px;
+  text-transform: none; }
+
+.rgdev-click {
+  display: block; }
+
+.rgdev-click02 {
+  display: block; }
+
+.rgdev-mobile-open {
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0; }
+
+.rgdev-item:hover .rgdev-submenu {
+  display: none; }
+
+.rgdev-submenu {
+  position: static;
+  width: 100%;
+  margin-left: 0 !important; }
+
+.rgdev-submenu li {
+  margin: 0px 0px 0px 0px !important; }
+
+.rgdev-submenu a {
+  display: block;
+  color: #fff;
+  padding: 12px 25px;
+  background: #14a8df !important;
+  border-bottom: solid 1px #ccc; }
+
+.rgdev-submenu li a.active {
+  color: #000 !important; }
+
+.rgdev-submenu-sub {
+  width: 100%;
+  position: static;
+  left: 100%;
+  top: 0;
+  display: none;
+  margin: 0px;
+  padding: 0px; }
+
+.rgdev-submenu-sub li {
+  margin: 0px 0px 0px 0px !important;
+  padding: 0px;
+  position: relative; }
+
+.rgdev-submenu-sub a {
+  display: block;
+  color: #fff;
+  padding: 10px 25px 10px 25px;
+  background: #14a8df !important;
+  border-bottom: solid 1px #ccc;
+  font-weight: normal; }
+
+.rgdev-submenu-sub li a.active {
+  color: #000 !important; }
+
+.rgdev-submenu-sub li:hover > a {
+  background-color: #017fae !important;
+  color: #fff; }
+
+.rgdev-submenu-sub-sub {
+  width: 100%;
+  position: static;
+  left: 100%;
+  top: 0;
+  display: none;
+  margin: 0px;
+  padding: 0px; }
+
+.rgdev-submenu-sub-sub li {
+  margin: 0px 0px 0px 0px !important; }
+
+.rgdev-submenu-sub-sub a {
+  display: block;
+  color: #000;
+  padding: 10px 25px 10px 25px;
+  background: #fff !important;
+  border-bottom: solid 1px #ccc;
+  font-weight: normal; }
+
+.rgdev-submenu-sub-sub li a.active {
+  color: #000 !important; }
+
+.rgdev-submenu-sub-sub li:hover > a {
+  background-color: #606060 !important;
+  color: #fff; }
+
+/* Mobile rgdevrgk~30987 */
+.rgdev-text {
+  display: block; }
+
+.rgdev-item:hover {
+  background-color: #000 !important;
+  color: #fff; }
+
+.rgdev-list li:hover > a {
+  background-color: #00749f; }
+
+.rgdev-item a:hover {
+  background-color: #00749f !important;
+  color: #fff; }
+
+.rgdev-item a.active {
+  background-color: #00749f; }
+

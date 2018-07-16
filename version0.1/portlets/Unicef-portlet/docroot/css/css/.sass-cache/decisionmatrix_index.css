@@ -1,0 +1,113 @@
+.tooltip_bottom1, .tooltip_bottom2, .tooltip_bottom3, .tooltip_bottom4 {
+  background: url(images/slider-tooltip.png) no-repeat;
+  position: absolute;
+  display: block;
+  top: -30px;
+  width: 31px;
+  height: 29px;
+  text-align: center;
+  color: #fff;
+  font: 16px Ar; }
+
+#xaxis .domain {
+  fill: none;
+  stroke: #000; }
+
+#xaxis text, #yaxis text {
+  font-size: 12px; }
+
+.Matrix_Header {
+  font-family: serif;
+  width: 900px;
+  height: 50px;
+  background-color: #8BC43F;
+  font-weight: bold;
+  color: #E9F2E1;
+  padding-left: 25px;
+  padding-top: 10px;
+  text-align: Left;
+  font-size: 30px;
+  margin: 0 auto; }
+
+#wrapper_graph {
+  width: 1000px;
+  margin: 15px auto; }
+
+.slider_container {
+  width: 1000px;
+  margin: 50px auto 0 auto; }
+
+.slider_container1 {
+  width: 1000px;
+  margin: 0 auto; }
+
+.slider {
+  width: 23%;
+  float: left;
+  padding: 10px; }
+
+.slider_name {
+  font-family: serif;
+  margin-bottom: 10px; }
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+  background-color: #5C5C5C; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+  border: 1px solid #c5c5c5;
+  background: #f6f6f6;
+  font-weight: normal;
+  color: #454545; }
+
+.ui-slider-horizontal .ui-slider-handle {
+  top: -.3em;
+  margin-left: -.6em; }
+
+.ui-slider .ui-slider-handle {
+  outline: none; }
+
+.ui-slider-range {
+  background: #25AAE2; }
+
+.ui-state-default, .ui-widget-content .ui-state-default {
+  background-color: #5C5C5C; }
+
+.ui-widget-content {
+  background: #D2D2D2; }
+
+#xaxis .domain {
+  stroke: #EFEEEE; }
+
+#yaxis .domain {
+  stroke: #EFEEEE; }
+
+#button_container {
+  width: 1000px;
+  margin: 0 auto; }
+
+#default-btn, #reset-btn, #save-btn {
+  float: right; }
+
+.btn {
+  margin-left: 15px;
+  font-family: serif; }
+
+.dropdown1 {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #cacaca; }
+
+@media only screen and (min-width: 300px) and (max-width: 480px) {
+  .slider, .slider_name {
+    width: 100%; } }
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .slider, .slider_name {
+    width: 100%; } }
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .slider, .slider_name {
+    width: 50%; } }
+@media only screen and (min-width: 992px) and (max-width: 1400px) {
+  .slider, .slider_name {
+    width: 50%; } }
+

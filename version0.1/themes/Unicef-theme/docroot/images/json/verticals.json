@@ -1,0 +1,222 @@
+ [  
+	{
+      "name": "Retail",
+      "icon": "assets/svg/Retail.svg",
+      "signals": [
+        {
+          "id": "retail_one",
+          "name": "one",
+          "startDate": 1457228800,
+          "endDate": 1577836800,
+          "impact": 4
+        },
+        {
+          "id": "retail_two",
+          "name": "two",
+          "startDate": 1735689600,
+          "endDate": 1893456000,
+          "impact": 2
+        }
+      ]
+    },
+    {
+      "name": "Financial_Services",
+      "icon": "assets/svg/FinancialServices.svg",
+      "signals": [
+        {
+          "id": "financial_service_three",
+          "name": "three",
+          "startDate": 1462228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "financial_service_four",
+          "name": "four",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Engineering",
+      "icon": "assets/svg/Engineering.svg",
+      "signals": [
+        {
+          "id": "engineering_five",
+          "name": "five",
+          "startDate": 1461228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "engineering_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Healthcare",
+      "icon": "assets/svg/Healthcare.svg",
+      "signals": [
+        {
+          "id": "healthcare_five",
+          "name": "five",
+          "startDate": 1453228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "healthcare_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Media",
+      "icon": "assets/svg/Media.svg",
+      "signals": [
+        {
+          "id": "media_five",
+          "name": "five",
+          "startDate": 1441228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "media_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Manufacturing",
+      "icon": "assets/svg/Manufacturing.svg",
+      "signals": [
+        {
+          "id": "manufacturing_five",
+          "name": "five",
+          "startDate": 1442228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "manufacturing_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Automotive",
+      "icon": "assets/svg/Automotive.svg",
+      "signals": [
+        {
+          "id": "automotive_five",
+          "name": "five",
+          "startDate": 1443228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "automotive_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Public_Sector",
+      "icon": "assets/svg/PublicSector.svg",
+      "signals": [
+        {
+          "id": "public_sector_five",
+          "name": "five",
+          "startDate": 1488228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "public_sector_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Utility_and_Energy",
+      "icon": "assets/svg/UtilitiesAndEnergy.svg",
+      "signals": [
+        {
+          "id": "utility_and_energy_five",
+          "name": "five",
+          "startDate": 1478228800,
+          "endDate": 1514764800,
+          "impact": 3
+        },
+        {
+          "id": "utility_and_energy_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Hightech",
+      "icon": "assets/svg/Hightech.svg",
+      "signals": [
+        {
+          "id": "hightech_five",
+          "name": "five",
+          "startDate": 1448228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "hightech_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    },
+    {
+      "name": "Diversified",
+      "icon": "assets/svg/Diversified.svg",
+      "signals": [
+        {
+          "id": "diversified_five",
+          "name": "five",
+          "startDate": 1458228800,
+          "endDate": 1514764800,
+          "impact": 4
+        },
+        {
+          "id": "diversified_six",
+          "name": "six",
+          "startDate": 1577836800,
+          "endDate": 1735689600,
+          "impact": 1
+        }
+      ]
+    }
+  ]

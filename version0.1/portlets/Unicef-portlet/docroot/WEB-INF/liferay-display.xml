@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE display PUBLIC "-//Liferay//DTD Display 6.2.0//EN" "http://www.liferay.com/dtd/liferay-display_6_2_0.dtd">
+
+<display>
+
+	<category name="UST-Global">
+		<portlet id="Idea" />
+		<portlet id="Solution Generator" />
+		<portlet id="Unicefsearch" />
+		<portlet id="top-bar-portlet" />
+		<portlet id="top-downloads-portlet" />
+		<portlet id="Agile Workflow" />
+		<portlet id="Hot Ideas" />
+		<portlet id="Dashboard" />
+		<portlet id="Idea-Hotness" />
+		<portlet id="Idea-Scrum" />
+		<portlet id="Solution-Scrum" />
+		<portlet id="Kudo-Meter" />
+		<portlet id="Thank You" />
+		<portlet id="Idea Scrums" />
+		<portlet id="Pivot" />
+		<portlet id="Solution-Hotness" />
+		<portlet id="Answer-Kudo-Meter" />
+		<portlet id="Unicef-Breadcrumb" />
+		<portlet id="UST-Homepage" />
+		<portlet id="ComingSoon" />
+		<portlet id="Launch-a-Challenge" />
+		<portlet id="Patentability-Test" />
+		<portlet id="new-dashboard"></portlet>
+		<portlet id="innometrics-dashboard"></portlet>
+		<portlet id="disruption-mapping"></portlet>
+		<portlet id="decisionmatrix"></portlet>
+		<portlet id="Pivot chart"></portlet>
+		<portlet id="OS/innovation-Theme-Search"></portlet>
+	</category>
+	<category name="category.sample">
+		<portlet id="example"></portlet>
+		<portlet id="video"></portlet>
+	</category>
+</display>

@@ -1,0 +1,183 @@
+<%@page import="com.liferay.portal.model.Layout"%>
+<%@page import="com.unicef.util.IdeaUtil"%>
+<%@page import="com.liferay.portal.service.LayoutLocalServiceUtil"%>
+<%@page import="com.unicef.util.SearchUtil"%>
+<%@page import="com.liferay.portal.kernel.json.JSONFactoryUtil"%>
+<%@page import="com.liferay.util.portlet.PortletProps"%>
+<%@page import="com.liferay.portal.kernel.util.PropsUtil"%>
+<%@page import="com.liferay.util.ContentUtil"%>
+<%@page import="com.liferay.portal.kernel.util.Validator"%>
+<%@page import="com.liferay.portal.kernel.util.GetterUtil"%>
+<%@page import="javax.portlet.PortletPreferences"%>
+<%@page import="com.liferay.util.PropertyComparator"%>
+<%@page import="com.liferay.portal.kernel.util.ListUtil"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.liferay.portal.kernel.search.facet.util.FacetFactoryUtil"%>
+<%@page import="com.liferay.portal.kernel.search.facet.config.FacetConfigurationUtil"%>
+<%@page import="com.liferay.portal.kernel.search.facet.config.FacetConfiguration"%>
+<%@page import="java.util.List"%>
+<%@page import="com.liferay.portal.kernel.search.facet.ScopeFacet"%>
+<%@page import="com.liferay.portal.kernel.search.facet.AssetEntriesFacet"%>
+<%@page import="com.liferay.portal.kernel.search.facet.Facet"%>
+<%@page import="com.liferay.portal.kernel.search.QueryConfig"%>
+<%@page import="com.liferay.portal.kernel.util.StringPool"%>
+<%@page import="com.liferay.portal.kernel.search.Hits"%>
+<%@page import="com.liferay.portal.kernel.util.HtmlUtil"%>
+<%@page import="com.liferay.portal.kernel.search.SearchContextFactory"%>
+<%@page import="com.liferay.portal.kernel.language.LanguageUtil"%>
+<%@page import="com.liferay.portal.kernel.search.SearchContext"%>
+<%@page import="com.liferay.portal.kernel.dao.search.SearchContainer"%>
+<%
+boolean advancedConfiguration = GetterUtil.getBoolean(portletPreferences.getValue("advancedConfiguration", null));
+	
+String searchConfiguration = portletPreferences.getValue("searchConfiguration", StringPool.BLANK);
+		 
+SearchContainer mainSearchSearchContainer = new SearchContainer(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, SearchContainer.DEFAULT_DELTA, portletURL, null, null);
+
+SearchContext searchContext = SearchContextFactory.getInstance(request);
+
+boolean isAdvanceSearch = (Boolean)renderRequest.getAttribute("isAdvanceSearch");
+if(isAdvanceSearch){
+	mainSearchSearchContainer.setEmptyResultsMessage(LanguageUtil.get(pageContext, "no-result-found"));
+}else{
+	mainSearchSearchContainer.setEmptyResultsMessage(LanguageUtil.format(pageContext, "no-results-were-found-that-matched-the-keywords-x", "<strong>" + HtmlUtil.escape(searchContext.getKeywords()) + "</strong>"));
+}
+
+searchContext.setAttribute("paginationType", "more");
+searchContext.setEnd(mainSearchSearchContainer.getEnd());
+
+QueryConfig queryConfig = new QueryConfig();
+
+queryConfig.setCollatedSpellCheckResultEnabled(true);
+queryConfig.setHighlightEnabled(true);
+queryConfig.setQueryIndexingEnabled(true);
+queryConfig.setQuerySuggestionEnabled(true);
+
+searchContext.setQueryConfig(queryConfig);
+
+searchContext.setStart(mainSearchSearchContainer.getStart());
+
+Facet assetEntriesFacet = new AssetEntriesFacet(searchContext);
+
+assetEntriesFacet.setStatic(true);
+
+searchContext.addFacet(assetEntriesFacet);
+
+Facet scopeFacet = new ScopeFacet(searchContext);
+
+scopeFacet.setStatic(true);
+
+searchContext.addFacet(scopeFacet);
+
+searchContext.addFacet(SearchUtil.getScopeFacet(searchContext));
+searchContext.addFacet(SearchUtil.getAssetEntryFacet(searchContext));
+searchContext.addFacet(SearchUtil.getAssetTagNameFacet(searchContext));
+searchContext.addFacet(SearchUtil.getAssetCategoriesFacet(searchContext));
+searchContext.addFacet(SearchUtil.getFoldersFacet(searchContext));
+searchContext.addFacet(SearchUtil.getUsersFacet(searchContext));
+searchContext.addFacet(SearchUtil.getModifiedFacet(searchContext));
+
+Hits hits = (Hits)renderRequest.getAttribute("hits");
+
+String[] queryTerms = hits.getQueryTerms();
+
+String sourceField = (String)renderRequest.getAttribute("sourceField");
+String typeField = (String)renderRequest.getAttribute("typeField");
+String stageField = (String)renderRequest.getAttribute("stageField");
+String hotIdeasField = (String)renderRequest.getAttribute("hotIdeasField");
+String fieldFrom = (String)renderRequest.getAttribute("fieldFrom");
+String fieldTo = (String)renderRequest.getAttribute("fieldTo");
+String includeTag = (String)renderRequest.getAttribute("includeTag");
+String excludeTag = (String)renderRequest.getAttribute("excludeTag");
+
+//String keyword = (String)request.getAttribute("keywords");
+request.setAttribute("search.jsp-queryTerms", queryTerms);
+
+boolean showMenu = true;
+%>
+
+<aui:row cssClass='<%= "search-layout" + (showMenu ? " menu-column" : StringPool.BLANK) %>'>
+	<c:if test="<%= showMenu %>">
+		<aui:col id="facetNavigation" span="2">
+		 <%
+			Map<String, Facet> facets = searchContext.getFacets();
+           
+			List<Facet> facetsList = ListUtil.fromCollection(facets.values());
+			facetsList = ListUtil.sort(facetsList, new PropertyComparator("facetConfiguration.weight", false, false));
+
+			for (Facet tempfacet : facetsList) {
+				  if(tempfacet.getFacetConfiguration().getClassName().equals(AssetEntriesFacet.class.getName())){ 
+					
+					if (tempfacet.isStatic()) {
+						continue;
+					}
+                
+				request.setAttribute("search.jsp-facet", tempfacet);
+			%>
+
+				<jsp:include page='<%= "/WEB-INF/views/search/facets/" + tempfacet.getFacetConfiguration().getDisplayStyle() + ".jsp" %>' /> 
+			<%
+			   }
+			}	  
+			%> 
+		</aui:col>
+	</c:if>
+
+	<aui:col cssClass="result searchResultContainer unicefSearchResultContainer" first="<%= !showMenu %>" span="10">
+
+		<liferay-ui:search-container
+			searchContainer="<%= mainSearchSearchContainer %>"
+			total="<%= hits.getLength() %>"
+			delta="20"
+		>
+			<liferay-ui:search-container-results
+				results="<%= hits.toList() %>"
+			/>
+
+			<liferay-ui:search-container-row
+				className="com.liferay.portal.kernel.search.Document"
+				escapedModel="<%= false %>"
+				keyProperty="UID"
+				modelVar="document"
+				stringKey="<%= true %>"
+			>
+				<liferay-ui:search-container-column-jsp path="/WEB-INF/views/search/main-search-result-form.jsp" />
+			</liferay-ui:search-container-row>
+
+			<%
+			String[] entryClassNames = searchContext.getEntryClassNames();
+
+			if (entryClassNames.length == 1) {
+				portletURL.setParameter("entryClassName", entryClassNames[0]);
+				portletURL.setParameter("isFilter", Boolean.TRUE.toString());
+			}
+			portletURL.setParameter("isAdvanceSearch", String.valueOf(isAdvanceSearch));
+			if(isAdvanceSearch){
+				portletURL.setParameter("sourceField", sourceField);
+				portletURL.setParameter("typeField", typeField);
+				portletURL.setParameter("stageField", stageField);
+				portletURL.setParameter("hotIdeasField", hotIdeasField);
+				portletURL.setParameter("fieldFrom", fieldFrom);
+				portletURL.setParameter("fieldTo", fieldTo);
+				portletURL.setParameter("includeTags", includeTag);
+				portletURL.setParameter("excludeTags", excludeTag);
+			}
+			%>
+
+			<liferay-ui:search-iterator type="more" />
+			<%-- <c:if test="<%= hits.getQuery() != null %>">
+				<table class="full-query">
+					<tr>
+						<td valign="top">
+							<div class="container">
+								<code>
+									<%= HtmlUtil.escape(hits.getQuery().toString()) %>
+								</code>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</c:if> --%>
+		</liferay-ui:search-container>
+	</aui:col>
+</aui:row>

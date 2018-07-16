@@ -1,0 +1,143 @@
+div.fancy-select {
+	position: relative;
+	font-weight: bold;
+ 	font-size: 13px;
+	color: #46565D;
+}
+
+div.fancy-select.disabled {
+	opacity: 0.5;
+}
+
+div.fancy-select select:focus + div.trigger {
+	box-shadow: 0 0 0 0px #4B5468;
+}
+
+div.fancy-select select:focus + div.trigger.open {
+	box-shadow: 0 0 0 0px #4B5468;
+}
+
+div.fancy-select div.trigger {
+ 	cursor: pointer;
+	padding: 10px 24px 9px 6px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	position: relative;
+	border:1px solid transparent;
+	border-bottom:1px solid #e1e1e1;
+	color: #869096; 
+	width:100%;
+    font:normal 21px/30px 'roboto', Arial, Helvetica, sans-serif;
+	transition: all 240ms ease-out;
+	-webkit-transition: all 240ms ease-out;
+	-moz-transition: all 240ms ease-out;
+	-ms-transition: all 240ms ease-out;
+	-o-transition: all 240ms ease-out;
+}
+
+div.fancy-select div.trigger:after {
+	content: "";
+	display: block;
+	position: absolute;
+	width:18px;
+	height:18px;
+	background:url(../images/select-aero.png);
+	background-repeat:no-repeat;
+	background-position:-5px -5px;
+	border: 5px solid transparent;
+ 	top:14px;
+	right:7px; opacity:0.4;
+}
+
+div.fancy-select div.trigger.open {
+ 	color: #7A8498;
+	box-shadow: none;
+}
+
+div.fancy-select div.trigger.open:after {
+	opacity:0.7;
+  }
+
+div.fancy-select ul.options {
+	list-style: none;
+	margin: 0;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 50;
+	max-height: 220px;
+	overflow: auto;
+	background: #eef1f2;
+ 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	min-width: 200px;
+	min-width:100%;
+	padding:6px;
+ 	transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+	-webkit-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+	-moz-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+	-ms-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+	-o-transition: opacity 300ms ease-out, top 300ms ease-out, visibility 300ms ease-out;
+}
+
+div.fancy-select ul.options.open {
+	visibility: visible;
+	top: 50px;
+	opacity: 1;
+
+	/* have to use a non-visibility transition to prevent this iOS issue (bug?): */
+	/*http://stackoverflow.com/questions/10736478/css-animation-visibility-visible-works-on-chrome-and-safari-but-not-on-ios*/
+	transition: opacity 300ms ease-out, top 300ms ease-out;
+	-webkit-transition: opacity 300ms ease-out, top 300ms ease-out;
+	-moz-transition: opacity 300ms ease-out, top 300ms ease-out;
+	-ms-transition: opacity 300ms ease-out, top 300ms ease-out;
+	-o-transition: opacity 300ms ease-out, top 300ms ease-out;
+}
+
+div.fancy-select ul.options.overflowing {
+	top: auto;
+	bottom: 40px;
+
+	transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+	-webkit-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+	-moz-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+	-ms-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+	-o-transition: opacity 300ms ease-out, bottom 300ms ease-out, visibility 300ms ease-out;
+}
+
+div.fancy-select ul.options.overflowing.open {
+	top: auto;
+	bottom: 50px;
+
+	transition: opacity 300ms ease-out, bottom 300ms ease-out;
+	-webkit-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+	-moz-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+	-ms-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+	-o-transition: opacity 300ms ease-out, bottom 300ms ease-out;
+}
+
+div.fancy-select ul.options li {
+	padding: 8px 12px 8px 12px;
+	color: #474747;
+	cursor: pointer;
+	white-space: nowrap;
+
+	transition: all 150ms ease-out;
+	-webkit-transition: all 150ms ease-out;
+	-moz-transition: all 150ms ease-out;
+	-ms-transition: all 150ms ease-out;
+	-o-transition: all 150ms ease-out;
+	font:normal 18px/25px 'roboto', Arial, Helvetica, sans-serif !important;
+}
+
+div.fancy-select ul.options li.selected, div.fancy-select ul.options li.selected:hover {
+	background:#d5d5d5;
+	color: rgba(255,255,255,1);
+}
+
+div.fancy-select ul.options li.hover {
+	color: #474747;
+	background-color:#e6e6e6;
+}

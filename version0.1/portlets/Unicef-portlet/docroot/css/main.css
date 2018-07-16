@@ -1,0 +1,25 @@
+.navbar-inner .collapse{ display:block; visibility:visible;}
+.container-fluid #breadcrumbs { margin-bottom:15px !important;}
+.cg-icon-fix01{ width:16px !important; height:16px !important; max-width:none !important;}
+
+.div-off{ visibility:hidden; opacity:0; height:0px; overflow : hidden; position:relative; left:0; top:0px;  -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -ms-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;}
+.div-on{ visibility: visible; opacity:1; z-index:1; height:auto; overflow:auto; position:relative; left:0px; top:0px;  -webkit-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -ms-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;}
+.cn-linkfix1{ padding:5px; border:1px solid #e8e8e8; margin-right:7px; float:left}
+.cursor{cursor: pointer;}
+.imgWidth{
+	width: 20px !important;
+}
+
+
+
+
+
+/* css for kudo meter and thank you meter */
+.km-graybox{ background-color:#EDEDED; display:block; padding:8px 14px; border-radius:4px;}
+.km-dal-yellow{ display:block; height:70px; background:url(../images/yellow-belt-2.png) left top repeat-x; border-left:7px solid #555555;}
+.km-light-yellow{ display:block; height:70px; background:url(../images/yellow-belt.png) left top repeat-x; }
+
+.km-dal-red{ display:block; height:70px; background:url(../images/red-belt-2.png) left top repeat-x; border-left:7px solid #555555;}
+.km-light-red{ display:block; height:70px; background:url(../images/red-belt.png) left top repeat-x; }
+
+

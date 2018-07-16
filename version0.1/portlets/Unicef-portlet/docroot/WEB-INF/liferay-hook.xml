@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.2.0//EN" "http://www.liferay.com/dtd/liferay-hook_6_2_0.dtd">
+
+<hook>
+	<service>
+		<service-type>com.liferay.portlet.documentlibrary.service.DLFileEntryService</service-type>
+		<service-impl>com.liferay.portlet.documentlibrary.service.DLFileEntryServiceImpl</service-impl>
+	</service>
+	<servlet-filter>
+		<servlet-filter-name>Unicef URL Mapping Filter</servlet-filter-name>
+		<servlet-filter-impl>com.unicef.url.filter.UnicefURLMappingFilter</servlet-filter-impl>
+	</servlet-filter>
+	<servlet-filter-mapping>
+		<servlet-filter-name>Unicef URL Mapping Filter</servlet-filter-name>
+		<before-filter>Virtual Host Filter</before-filter>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</servlet-filter-mapping>
+</hook>

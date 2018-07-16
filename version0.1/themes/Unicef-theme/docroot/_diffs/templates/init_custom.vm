@@ -1,0 +1,15 @@
+#if ($layout.isPrivateLayout())
+	#set ($site_default_url = $site_default_private_url)
+#end
+#set($url = $theme_display.getURLCurrent())
+#set($create_account_url=$portletURLFactory.create($request,"58",$page.getPlid(),"ACTION_PHASE"))
+$create_account_url.setWindowState("maximized")
+$create_account_url.setPortletMode("view")
+$create_account_url.setParameter("saveLastPath","0")
+$create_account_url.setParameter("struts_action","/login/create_account")
+
+#set ($is_view_top_most_downloads_portlet = false)
+#if($url.contains("toolkit-documents"))
+	#set ($is_view_top_most_downloads_portlet = true)
+#end
+#set($video_create_account_url="/web/guest/home?p_p_id=58&p_p_lifecycle=1&p_p_state=maximized&p_p_mode=view&saveLastPath=0&_58_struts_action=%2Flogin%2Fcreate_account")

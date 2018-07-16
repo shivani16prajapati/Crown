@@ -1,0 +1,290 @@
+[
+    {
+      "name": "national",
+      "icon": "assets/svg/National.svg",
+      "subtrends": [
+        {
+          "name": "First subtrend",
+          "icon": "assets/svg/MEMs.svg",
+          "disruptions": [
+            {
+              "id": "mobile_recept",
+              "name": "Broadcast reception in Phones",
+              "date": 1609459200,
+              "icon": "assets/svg/MobileRecept.svg"
+            },
+            {
+              "id": "eye_tracking",
+              "name": "Eye Tracking",
+              "date": 1498228800,
+              "icon": "assets/svg/EyeTracking.svg",
+              "connections": {
+                "disruptions": [
+                  {
+                    "id": "smart_antenna",
+                    "ratio": 0.4
+                  },
+                  {
+                    "id": "biometric_iris",
+                    "ratio": 1
+                  }
+                ],
+                "verticals": [
+                  {
+                    "id": "distributed_ip",
+                    "ratio": 0.3
+                  },
+                  {
+                    "id": "power_harvesting",
+                    "ratio": 0.5
+                  }
+                ]
+              }
+            },
+            {
+              "id": "dig_money",
+              "name": "No physical money",
+              "date": 1893456000,
+              "icon": "assets/svg/DigMoney.svg"
+            }
+          ]
+        },
+        {
+          "name": "Second subtrend",
+          "icon": "assets/svg/Idea.svg",
+          "disruptions": [
+            {
+              "id": "video_phone",
+              "name": "Video Phone & Identity",
+              "date": 1447890400,
+              "icon": "assets/svg/Identity.svg",
+              "connections": {
+                "disruptions": [
+                  {
+                    "id": "palm_vowel_kb",
+                    "ratio": 0.7
+                  }
+                ],
+                "verticals": [
+                  {
+                    "id": "distributed_ip",
+                    "ratio": 0.2
+                  },
+                  {
+                    "id": "power_harvesting",
+                    "ratio": 0.4
+                  },
+                  {
+                    "id": "retail_one",
+                    "ratio": 0.3
+                  },
+                  {
+                    "id": "retail_two",
+                    "ratio": 0.5
+                  }
+                ]
+              }
+            },
+            {
+              "id": "biometric_iris",
+              "name": "Biometric Iris",
+              "date": 1546300800,
+              "icon": "assets/svg/BioIris.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "corporate",
+      "icon": "assets/svg/Corporate.svg",
+      "subtrends": [
+        {
+          "name": "subtrend",
+          "icon": "assets/svg/Battery.svg",
+          "disruptions": [
+            {
+              "id": "t9",
+              "name": "T9",
+              "date": 1447890400,
+              "icon": "assets/svg/Idea.svg"
+            },
+            {
+              "id": "palm_vowel_kb",
+              "name": "Palm vowel KB",
+              "date": 1489228800,
+              "icon": "assets/svg/Idea.svg"
+            },
+            {
+              "id": "fear_privacy_progressive",
+              "name": "Fear privacy progressive relationships",
+              "date": 1537300800,
+              "icon": "assets/svg/Privacy.svg"
+            },
+            {
+              "id": "no_more_physical_mail",
+              "name": "No more physical mail - no more use of paper",
+              "date": 1609459200,
+              "icon": "assets/svg/Paperless.svg"
+            },
+            {
+              "id": "monacle_display",
+              "name": "\"Monacle\" display",
+              "date": 1893456000,
+              "icon": "assets/svg/Monacle.svg"
+            },
+            {
+              "id": "dna_lock",
+              "name": "DNA Lock w/IP",
+              "date": 2208988800,
+              "icon": "assets/svg/DNA.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "personal",
+      "icon": "assets/svg/Personal.svg",
+      "subtrends": [
+        {
+          "name": "subtrend",
+          "icon": "assets/svg/Idea.svg",
+          "disruptions": [
+            {
+              "id": "realtime_logistic_tracking",
+              "name": "Realtime Logistics Tracking",
+              "date": 1447890400,
+              "icon": "assets/svg/Logistics.svg"
+            },
+            {
+              "id": "barcode_machine",
+              "name": "\"barcode\" machine active ID RF tags F-10",
+              "date": 1502228800,
+              "icon": "assets/svg/Barcode.svg"
+            },
+            {
+              "id": "smart_antenna",
+              "name": "Smart Antenna (aim and receive)",
+              "date": 1546300800,
+              "icon": "assets/svg/Antenna.svg"
+            },
+            {
+              "id": "the_mems_revolution",
+              "name": "The MEMs Revolution Voice cancellation, heat, humidity",
+              "date": 1609459200,
+              "icon": "assets/svg/MEMs.svg"
+            },
+            {
+              "id": "gsr",
+              "name": "GSR",
+              "date": 1893456000,
+              "icon": "assets/svg/Idea.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "computing",
+      "icon": "assets/svg/Computing.svg",
+      "subtrends": [
+        {
+          "name": "subtrend",
+          "icon": "assets/svg/Antenna.svg",
+          "disruptions": [
+            {
+              "id": "dram_memory_stick",
+              "name": "DRAM Memory Stick Compact Flash Smartmedia",
+              "date": 1447890400,
+              "icon": "assets/svg/DRAM.svg"
+            },
+            {
+              "id": "nimh_nidc",
+              "name": "NiMH NIDC",
+              "date": 1483228800,
+              "icon": "assets/svg/Idea.svg"
+            },
+            {
+              "id": "10w_power_geoposition",
+              "name": "10W Power Geoposition",
+              "date": 1546300800,
+              "icon": "assets/svg/Geolocation.svg"
+            },
+            {
+              "id": "power_harvesting",
+              "name": "Power Harvesting",
+              "date": 1609459200,
+              "icon": "assets/svg/Harvest.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "network",
+      "icon": "assets/svg/Network.svg",
+      "subtrends": [
+        {
+          "name": "subtrend",
+          "icon": "assets/svg/Harvest.svg",
+          "disruptions": [
+            {
+              "id": "ultra_mda",
+              "name": "Ultra MDA  1.8\"",
+              "date": 1447890400,
+              "icon": "assets/svg/Idea.svg"
+            },
+            {
+              "id": "1_gb",
+              "name": "1\" GB",
+              "date": 1483228800,
+              "icon": "assets/svg/Idea.svg"
+            },
+            {
+              "id": "photo_rechargeable",
+              "name": "Photo Rechargeable AIR Battery",
+              "date": 1521300800,
+              "icon": "assets/svg/Battery.svg"
+            },
+            {
+              "id": "question",
+              "name": "?",
+              "date": 1609459200,
+              "icon": "assets/svg/Idea.svg"
+            },
+            {
+              "id": "distributed",
+              "name": "Distributed",
+              "date": 1893456000,
+              "icon": "assets/svg/Distribute.svg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "infrastructure",
+      "icon": "assets/svg/Infrastructure.svg",
+      "subtrends": [
+        {
+          "name": "subtrend",
+          "icon": "assets/svg/Distribute.svg",
+          "disruptions": [
+            {
+              "id": "disrup_1",
+              "name": "disrup 1",
+              "date": 1447890400,
+              "icon": "assets/svg/Battery.svg"
+            },
+            {
+              "id": "disrup_2",
+              "name": "disrup 2",
+              "date": 1683228800,
+              "icon": "assets/svg/Harvest.svg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
