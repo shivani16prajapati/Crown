@@ -122,6 +122,7 @@ import com.unicef.service.LikeService;
 import com.unicef.service.SocialWorkflowService;
 import com.unicef.service.TeamMemberService;
 import com.unicef.service.UserFeedService;
+import com.unicef.service.impl.IdeaServiceImpl;
 import com.unicef.userfeed.UserFeedConstant;
 import com.unicef.util.IdeaConstant;
 import com.unicef.util.IdeaEnum;
@@ -394,6 +395,9 @@ public class IdeaController {
 		}catch(Exception e){}
 		Idea idea = ideaService.find(ideaId);
 	
+		
+		
+		
 		// ------------------- //
 		/*TeamMember teamMember = new TeamMember();
 		teamMember.setIdeaId(idea.getIdeaId());
@@ -564,48 +568,57 @@ public class IdeaController {
 		SocialWorkflow workflow = null;
 		IdeaHistory ideaHistory = null;
 		
-		try{
-			Map<String,Object> params = new LinkedHashMap<>();	
-			params.put("ideaname",ideaTitle);
-			String ideaDescrption = ideaContent.replaceAll("\\<[^>]*>","");
-			params.put("ideadetails",ideaDescrption);
-			StringBuilder postData = new StringBuilder();
-	        for (Map.Entry<String,Object> param : params.entrySet()) {
-	            if (postData.length() != 0) postData.append('&');
-	            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-	            postData.append('=');
-	            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+	
+		long totalIdeas = ideaService.countTotalIdeas();
+		log.info("total ideas : "+totalIdeas);
+		if(totalIdeas >= 500){
+			try{
+				Map<String,Object> params = new LinkedHashMap<>();	
+				params.put("ideaname",ideaTitle);
+				String ideaDescrption = ideaContent.replaceAll("\\<[^>]*>","");
+				params.put("ideadetails",ideaDescrption);
+				StringBuilder postData = new StringBuilder();
+		        for (Map.Entry<String,Object> param : params.entrySet()) {
+		            if (postData.length() != 0) postData.append('&');
+		            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+		            postData.append('=');
+		            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+		        }
+		        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+		    	String requestPage = getapicall()+"/checkduplicate";
+		    	log.info(requestPage);
+				URL url = new URL(requestPage);
+				HttpURLConnection conn= (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod( "POST" );
+				conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			    conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+			    conn.setDoOutput(true);
+		        conn.getOutputStream().write(postDataBytes);
+		        Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+		        String output = "";
+		        for (int c; (c = in.read()) >= 0;){
+		        	output += ((char)c);
+		    	}
+		        JSONObject jsonObject = JSONFactoryUtil.createJSONObject(output);
+		        if(jsonObject.getInt("response")!=-1){
+		        	log.info(jsonObject.getString("ideaname"));
+		        	Idea _idea = ideaService.getIdeaByIdeaNam(jsonObject.getString("ideaname"));
+		        	if(Validator.isNotNull(_idea.getIdeaId())){
+		        		actionResponse.setRenderParameter("view", "viewIdea");
+		    			actionResponse.setRenderParameter("ideaId", String.valueOf(_idea.getIdeaId()));
+		    			actionResponse.setRenderParameter("duplicate_idea","1");
+		    			return;
+		        	}
+		        	
+		        }
+	        }catch(Exception e){
+	        	log.info("-------Error found in api calling---------");
+	        	sendEmail();
 	        }
-	        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
-	    	String requestPage = getapicall()+"/checkduplicate";
-	    	log.info(requestPage);
-			URL url = new URL(requestPage);
-			HttpURLConnection conn= (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod( "POST" );
-			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-		    conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
-		    conn.setDoOutput(true);
-	        conn.getOutputStream().write(postDataBytes);
-	        Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-	        String output = "";
-	        for (int c; (c = in.read()) >= 0;){
-	        	output += ((char)c);
-	    	}
-	        JSONObject jsonObject = JSONFactoryUtil.createJSONObject(output);
-	        if(jsonObject.getInt("response")!=-1){
-	        	log.info(jsonObject.getString("ideaname"));
-	        	Idea _idea = ideaService.getIdeaByIdeaNam(jsonObject.getString("ideaname"));
-	        	if(Validator.isNotNull(_idea.getIdeaId())){
-	        		actionResponse.setRenderParameter("view", "viewIdea");
-	    			actionResponse.setRenderParameter("ideaId", String.valueOf(_idea.getIdeaId()));
-	    			actionResponse.setRenderParameter("duplicate_idea","1");
-	    			return;
-	        	}
-	        	
-	        }
-        }catch(Exception e){
-        	
-        }
+		}
+		
+		
+		
 		if (ideaId > 0) {
 			idea = ideaService.find(ideaId);
 		} else {
@@ -634,13 +647,13 @@ public class IdeaController {
 			idea.setVersion(IdeaUtil.getFormattedVersion(version));
 		}
 		
-		
 		idea.setStatus(IdeaEnum.IDEA_BACKLOG.getValue());
 		idea.setCompanyId(themeDisplay.getCompanyId());
 		idea.setCoInventorId(themeDisplay.getUserId());
 		idea.setGroupId(themeDisplay.getScopeGroupId());
 		
 		
+	try{
 		Map<String,Object> _params = new LinkedHashMap<>();
 		_params.put("ideaname",idea.getIdeaTitle());
 		_params.put("ideaid",idea.getIdeaTitle());	
@@ -665,7 +678,10 @@ public class IdeaController {
 		_conn.setDoOutput(true);
 		_conn.getOutputStream().write(_postDataBytes);
         Reader _in = new BufferedReader(new InputStreamReader(_conn.getInputStream(), "UTF-8"));
-	        
+	}catch(Exception e){
+		log.info("-------Error found in api calling---------");
+		sendEmail();
+	}   
         
 		boolean isUpdated = true;
 		if (ideaId > 0) {
@@ -768,6 +784,7 @@ public class IdeaController {
 				SessionErrors.add(actionRequest, IdeaConstant.ERROR_IN_IDEA_MESSAGE_CREATE);
 			}
 		}
+		
 		/* get the 5 file names */
 		FileEntry fileEntry = null;
 		String filePrefix = "fileUpload";
@@ -808,29 +825,32 @@ public class IdeaController {
 		}
 		
 		if(!isImage){
-			try {
+			/*try {
 				fileEntry = saveDefaultImage(uploadRequest, themeDisplay);
 			} catch (PortalException | SystemException e) {
 				log.error("Error in Uploading files in Idea"+e.getMessage());
-			}
+			}*/
 			IdeaAttachement ideaAttachement = new IdeaAttachement();
-			ideaAttachement.setFileEntryId(fileEntry.getFileEntryId());
+			ideaAttachement.setFileEntryId(0);
 			if (ideaId > 0) {
 				ideaAttachement.setVersion(idea.getVersion());
 			} else {
 				ideaAttachement.setVersion(version);
 			}
-
+			
 			ideaAttachement.setIdea(idea);
 			ideaAttachement.setCompanyId(themeDisplay.getCompanyId());
 			ideaAttachement.setGroupId(themeDisplay.getScopeGroupId());
 			ideaAttachementService.create(ideaAttachement);
+			
 		}
 		
 		if (sliderEdit) {
 			actionResponse.setRenderParameter("view", "viewIdea");
 			actionResponse.setRenderParameter("ideaId", String.valueOf(ideaId));
 		}
+		
+		
 	}
 
 	private FileEntry saveDefaultImage(UploadPortletRequest uploadRequest,ThemeDisplay themeDisplay) throws PortalException, SystemException{
@@ -1121,6 +1141,7 @@ public class IdeaController {
         }
 		
 	}
+	
 
 	@ResourceMapping(value = "ideaLikeURL")
 	public void ideaLikeURL(ResourceRequest resourceRequest,
@@ -1925,4 +1946,17 @@ public void promoteToScrum(ActionRequest actionRequest,ActionResponse actionResp
 		 List<UserFeed> userfeed = userFeedService.getUserFeed(userId, start, end);
 		 return userfeed;
 	}
+	public static String getEmailId(){
+	    Configuration configuration = ConfigurationFactoryUtil.getConfiguration(PortalClassLoaderUtil.getClassLoader(), "portlet");
+		String value = configuration.get("TO_EMAIL");
+		return value;
+	}
+	public void sendEmail(){
+		 String email = getEmailId();
+		 log.info(email);
+		 SendEmail.SendMail(email);
+	 }
+	
+	
+	
 }

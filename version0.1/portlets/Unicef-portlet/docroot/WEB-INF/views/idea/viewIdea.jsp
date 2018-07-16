@@ -128,10 +128,12 @@
 								double version =(Double) pageContext.getAttribute("ideaVersion");
 								List<IdeaAttachement>ideaAttachementList = IdeaUtil.findFileEntryIdByIdeaAndVersion(ideaId, version);
 								for (IdeaAttachement ideaAttachement : ideaAttachementList) {
-									FileEntry fileEntry = DLAppLocalServiceUtil.getFileEntry(ideaAttachement.getFileEntryId());
-									String url = DLUtil.getPreviewURL(fileEntry, fileEntry.getFileVersion(), themeDisplay, "&imagePreview=1");
-									String fileName = fileEntry.getTitle();
-									long attachmentId = ideaAttachement.getAttachementId();
+									if(ideaAttachement.getFileEntryId()!=0){
+										FileEntry fileEntry = DLAppLocalServiceUtil.getFileEntry(ideaAttachement.getFileEntryId());
+										String url = DLUtil.getPreviewURL(fileEntry, fileEntry.getFileVersion(), themeDisplay, "&imagePreview=1");
+										String fileName = fileEntry.getTitle();
+										long attachmentId = ideaAttachement.getAttachementId();
+									
 							%>
 							
 							<%-- 
@@ -145,7 +147,8 @@
 							<img src="<%=url%>" id="<portlet:namespace/>updatedIdeaImageBy"
 								name="<portlet:namespace/>updatedIdeaImageBy" width="250px"
 								heigh="250px" class="cn-linkfix1" />
-							<%}%>	
+							<%}
+							}%>	
 				</div>
 					<c:set var="divId" value="${divId - 1}" scope="page"></c:set>
 				</div>

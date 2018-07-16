@@ -143,19 +143,19 @@
 		  #end
 	  		<footer id="footer" role="contentinfo">
 	  			<div class="ust-newmenu-bottom-links clearfix">
-  					<a href="#"  style="text-decoration : none">
+  					<a href="/group/guest/inspire1"  style="text-decoration : none">
   						<span><img src="$themeDisplay.getPathThemeImages()/Inspire.png"  height="55px" width="55px"/></span>
   						<span style="margin-left: 5px">Inspire</span>
   					</a>
-  					<a href="#"  style="text-decoration : none">
+  					<a href="/group/guest/knowledge"  style="text-decoration : none">
   						<span><img src="$themeDisplay.getPathThemeImages()/Knowledge.png"  height="55px" width="55px"/></span>
   						<span style="margin-left: 5px">Knowledge</span>
   					</a>
-  					<a href="#"  style="text-decoration : none">
+  					<a href="/group/guest/innovation-training"  style="text-decoration : none">
   						<span><img src="$themeDisplay.getPathThemeImages()/training.png"  height="55px" width="55px"/></span>
   						<span style="margin-left: 5px">Innovation Training</span>
   					</a>
-  					<a href="#"  style="text-decoration : none">
+  					<a href="/group/guest/about-idea-machine"  style="text-decoration : none">
   						<span><img src="$themeDisplay.getPathThemeImages()/about-os-icon.png"  height="55px" width="55px"/></span>
   						<span style="margin-left: 5px">About OS/i</span>
   					</a>
