@@ -28,9 +28,10 @@
     %>
     
     <liferay-portlet:renderURL portletName="Idea_WAR_Unicefportlet"  var="ideaPortletURL" plid="<%=structureId %>" varImpl="ideaPortletURL" windowState="<%=LiferayWindowState.NORMAL.toString()%>">
-    <portlet:param name="view" value="viewIdea" />
-    <portlet:param name="ideaId" value="${idea.ideaId}" />
+    	<portlet:param name="view" value="viewIdea" />
+    	<portlet:param name="ideaId" value="${idea.ideaId}" />
     </liferay-portlet:renderURL>
+   
    
     <c:if test="${ideaCounter.count == 1}">  
          <div class="ust-leftbox01 clearfix">

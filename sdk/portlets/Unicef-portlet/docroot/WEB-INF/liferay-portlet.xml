@@ -103,7 +103,7 @@
   		<header-portlet-javascript>/js/jquery.fancybox.js</header-portlet-javascript>
 		<footer-portlet-javascript>/js/main.js</footer-portlet-javascript>
 		<css-class-wrapper>Unicef-portlet</css-class-wrapper>
-		<add-default-resource>true</add-default-resource>
+		<!-- <add-default-resource>true</add-default-resource> -->
 	</portlet><portlet>
 		<portlet-name>top-bar-portlet</portlet-name>
 		<icon>/icon.png</icon>

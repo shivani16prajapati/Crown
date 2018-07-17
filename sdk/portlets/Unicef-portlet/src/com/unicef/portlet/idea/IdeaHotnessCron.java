@@ -1,5 +1,10 @@
 package com.unicef.portlet.idea;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,11 +17,16 @@ import java.util.concurrent.TimeUnit;
 import org.apache.poi.ss.formula.functions.Value;
 import org.springframework.context.ApplicationContext;
 
+import com.liferay.portal.kernel.configuration.Configuration;
+import com.liferay.portal.kernel.configuration.ConfigurationFactoryUtil;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.messaging.Message;
 import com.liferay.portal.kernel.messaging.MessageListener;
 import com.liferay.portal.kernel.messaging.MessageListenerException;
+import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.sun.org.apache.bcel.internal.generic.FALOAD;
 import com.unicef.domain.Idea;
 import com.unicef.domain.IdeaCommentVote;
@@ -31,7 +41,6 @@ import com.unicef.service.LikeService;
 
 public class IdeaHotnessCron implements MessageListener{
 	private static final Log log = LogFactoryUtil.getLog(IdeaHotnessCron.class);
-
 
 	@Override
 	public void receive(Message message) throws MessageListenerException {
@@ -135,12 +144,51 @@ public class IdeaHotnessCron implements MessageListener{
 		}	
 		
 		log.info("Idea Hotness Scheduler Complated");
+		checkAPI();
 		
 	
 		
 	}
 
-	
+ public static String getapicall(){
+		Configuration configuration = ConfigurationFactoryUtil.getConfiguration(PortalClassLoaderUtil.getClassLoader(), "portlet");
+		String value = configuration.get("APICALL");
+		return value;
+ }
+ 
+ public static String getEmailId(){
+	    Configuration configuration = ConfigurationFactoryUtil.getConfiguration(PortalClassLoaderUtil.getClassLoader(), "portlet");
+		String value = configuration.get("TO_EMAIL");
+		return value;
+ }
+ 
+ public void checkAPI(){
+		String requestPage = getapicall()+"/app";
+		//log.info(requestPage);
+		try {
+			URL url = new URL(requestPage);
+			HttpURLConnection conn= (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod( "GET" );
+			conn.setDoOutput(true);
+	        Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+	        String output = "";
+	        for (int c; (c = in.read()) >= 0;){
+	        	output += ((char)c);
+	    	}
+	        JSONObject jsonObject = JSONFactoryUtil.createJSONObject(output);
+	        log.info("-----> Api is working.!: "+jsonObject.getString("hello"));
+	        
+		}catch(Exception e){
+			log.info("------>Api is not working.!");
+			sendEmail();
+		}
+ }
+ 
+ public void sendEmail(){
+	 String email = getEmailId();
+	 log.info(email);
+	 SendEmail.SendMail(email);
+ }
 	
 
 }

@@ -1,15 +1,25 @@
 package com.unicef.portlet.idea;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 
+import com.liferay.portal.kernel.configuration.Configuration;
+import com.liferay.portal.kernel.configuration.ConfigurationFactoryUtil;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.messaging.Message;
 import com.liferay.portal.kernel.messaging.MessageListener;
 import com.liferay.portal.kernel.messaging.MessageListenerException;
+import com.liferay.portal.kernel.util.PortalClassLoaderUtil;
 import com.unicef.domain.Idea;
 import com.unicef.domain.IdeaCommentVote;
 import com.unicef.domain.UserFeed;
@@ -26,7 +36,8 @@ public class Notification implements MessageListener{
 	private boolean createNewFile;
 	
 	private static final Log log = LogFactoryUtil.getLog(Notification.class);
-
+	
+	
 	@Override
 	public void receive(Message arg0) throws MessageListenerException {
 		log.info("Idea Notification Scheduler called");
@@ -141,6 +152,9 @@ public class Notification implements MessageListener{
 		}
 		
 		log.info("Idea Notification Scheduler End");
+		
 	}
 
+	
+	 
 }
