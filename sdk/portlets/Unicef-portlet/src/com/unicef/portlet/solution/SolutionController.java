@@ -29,6 +29,7 @@ import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portlet.asset.model.AssetCategory;
+import com.liferay.portlet.asset.service.AssetCategoryLocalServiceUtil;
 import com.unicef.domain.IdeaEndorsement;
 import com.unicef.domain.IdeaScrum;
 import com.unicef.domain.SocialWorkflow;

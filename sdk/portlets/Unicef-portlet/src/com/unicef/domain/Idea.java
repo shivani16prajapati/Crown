@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
+import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 @Table(name = "idea")
@@ -46,7 +47,10 @@ public class Idea  {
 	
 	@Column(name="is_deleted")
 	private boolean isDeleted;
-
+	
+	@Column(name="is_submitted_api",nullable=false)
+	private boolean isSubmittedInPython = false;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "submission_date")
 	private Date submissionDate;
@@ -127,7 +131,13 @@ public class Idea  {
 	public void setInvName(String invName) {
 		this.invName = invName;
 	}
-   
+
+	public boolean isSubmittedInPython() {
+		return isSubmittedInPython;
+	}
+	public void setSubmittedInPython(boolean isSubmittedInPython) {
+		this.isSubmittedInPython = isSubmittedInPython;
+	}
 	
 	
 	public long getNewStage() {

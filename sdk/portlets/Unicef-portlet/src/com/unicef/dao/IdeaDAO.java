@@ -34,6 +34,8 @@ public interface IdeaDAO extends GenericDAO<Idea, Long> {
 	void deleteIdeaHistory(long ideaId);
 
 	public List<Idea> ideaList();
+	
+	public List<Idea> getUnSubmittedIdeasInPython();
 
 	void createIdeaScrum(IdeaScrum scrum);
 

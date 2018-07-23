@@ -586,6 +586,17 @@ public class IdeaDAOImpl extends GenericDAOImpl<Idea, Long> implements IdeaDAO {
 	}
 
 	@Override
+	public List<Idea> getUnSubmittedIdeasInPython() {
+		boolean ideas = true;
+		Session session = sessionFactory.getCurrentSession();
+		return (List<Idea>) session
+				.createSQLQuery(
+						"Select * from idea where is_submitted_api ="
+								+ ideas).addEntity(Idea.class)
+				.list();
+	}
+	
+	@Override
 	public long getIdeaCountByMonthWiseAndYear(String year) {
 		Session session = sessionFactory.getCurrentSession();
 		String query = "Select count(*) from idea where submission_date like '"+year+"%'";
@@ -654,6 +665,8 @@ public class IdeaDAOImpl extends GenericDAOImpl<Idea, Long> implements IdeaDAO {
 		return (List<Idea>) session
 				.createSQLQuery("SELECT * FROM idea order by hot_weight desc limit "+start+","+end).addEntity(Idea.class).list();
 	}
+
+	
 	
 	
 	

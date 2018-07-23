@@ -103,13 +103,16 @@
 				<liferay-ui:message key="problem-goal"/>
 			</aui:option>
 			<c:forEach items="${solutionTypeList}" var="solutionType">
-				<c:choose>
+				<%-- <c:choose>
 					<c:when test="${solutionType.getName() == 'Good Practices'}"></c:when>
 					<c:when test="${solutionType.getName() == 'Lessons Learned'}"></c:when>
 					<c:otherwise>
 						<aui:option value="${solutionType.categoryId}" selected="${solution.spaceId == solutionType.categoryId}">${solutionType.name}</aui:option>
 					</c:otherwise>
-				</c:choose>
+				</c:choose> --%>
+				
+				<aui:option value="${solutionType.categoryId}" selected="${solution.spaceId == solutionType.categoryId}">${solutionType.name}</aui:option>
+				
 			</c:forEach>
 		</aui:select>
   </div> 

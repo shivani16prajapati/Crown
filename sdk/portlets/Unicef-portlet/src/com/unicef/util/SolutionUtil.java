@@ -141,7 +141,7 @@ public class SolutionUtil {
 		return stageList;
 	}
 
-	public static List<AssetCategory> getSolutionSpaceList(long scopeGroupId,
+	/*public static List<AssetCategory> getSolutionSpaceList(long scopeGroupId,
 			long userId) throws PortalException, SystemException {
 		List<AssetCategory> ideaTypeList = new ArrayList<AssetCategory>();
 		AssetVocabulary ideaAssetVocabulary=null;
@@ -162,7 +162,42 @@ public class SolutionUtil {
 			}
 		
 		return ideaTypeList;
+	}*/
+	
+	
+	public static List<AssetCategory> getSolutionSpaceList(long scopeGroupId,
+			long userId) throws PortalException, SystemException {
+		List<AssetCategory> ideaTypeList = new ArrayList<AssetCategory>();
+		AssetVocabulary ideaAssetVocabulary=null;
+		
+			try {
+				ideaAssetVocabulary = AssetVocabularyLocalServiceUtil.getGroupVocabulary(scopeGroupId, "Solution_Space");
+			} catch (PortalException e) {
+				serviceContext.setScopeGroupId(scopeGroupId);
+				ideaAssetVocabulary = AssetVocabularyLocalServiceUtil.addVocabulary(userId, "Solution_Space", serviceContext);
+			} catch (SystemException e) {
+				e.printStackTrace();
+			}
+			long ideaVocabularyId = ideaAssetVocabulary.getVocabularyId();
+			try {
+				ideaTypeList = AssetCategoryLocalServiceUtil.getVocabularyCategories(ideaVocabularyId, -1, -1, null);
+				if(ideaTypeList.size() == 0){
+					AssetCategoryLocalServiceUtil.addCategory(userId, "Possible solution to an existing problem", ideaVocabularyId, serviceContext);
+					AssetCategoryLocalServiceUtil.addCategory(userId, "Problem Goal", ideaVocabularyId, serviceContext);
+					AssetCategoryLocalServiceUtil.addCategory(userId, "A new product", ideaVocabularyId, serviceContext);
+					AssetCategoryLocalServiceUtil.addCategory(userId, "A new service", ideaVocabularyId, serviceContext);
+					AssetCategoryLocalServiceUtil.addCategory(userId, "Improving how we work", ideaVocabularyId, serviceContext);
+					AssetCategoryLocalServiceUtil.addCategory(userId, "Social innovation", ideaVocabularyId, serviceContext);
+					ideaTypeList = AssetCategoryLocalServiceUtil.getVocabularyCategories(ideaVocabularyId, -1, -1, null);
+				}
+			} catch (SystemException e) {
+				log.error("Solution Type List Not Found"+e.getMessage());
+				
+			}
+		
+		return ideaTypeList;
 	}
+	
 	
 	public static List<Solution> getSolutionList(){
 		return solutionService.solutionList();

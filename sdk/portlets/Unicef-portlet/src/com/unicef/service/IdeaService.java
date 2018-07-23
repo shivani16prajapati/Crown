@@ -33,6 +33,8 @@ public interface IdeaService extends GenericService<Idea, Long> {
 	public void deleteIdeaHistory(long ideaId);
 	
 	public List<Idea> ideaList();
+	
+	public List<Idea> getUnSubmittedIdeasInPython();
 
 	void createIdeaScrum(IdeaScrum scrum);
 

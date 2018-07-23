@@ -8,13 +8,13 @@
         <th width="10%" align="center" valign="middle" scope="col"><span class="cs-block1">No</span></th>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">Is there a new (to Crown and the industry) technology or application process?</td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">Is this a new (to Crown and the industry) technology or application process?</td>
         <td class="il-font-18 il-font-gray" width="10%" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox1">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" width="10%" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">Is there a new (to Crown and the industry) system feature or function?</td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">Is this a new (to Crown and the industry) system feature or function?</td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox1">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
@@ -26,7 +26,7 @@
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">Are there improvements to existing processes and systems?</td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">Are this improvements to existing processes and systems?</td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox1">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
@@ -114,44 +114,44 @@
   
 
   <div class="table-responsive np-tablefix01" id="count">
-  <table width="100%" border="0" cellspacing="0" cellpadding="5" class="table il-tableS-01">
+  <table width="100%" border="0" cellspacing="0" cellpadding="5" class="table il-tableS-01">	
       <tr>
         <th align="left" valign="middle" scope="col"><span class="cs-block1">Strategic Value</span></th>
         <th width="10%" align="center" valign="middle" scope="col"><span class="cs-block1">Yes</span></th>
         <th width="10%" align="center" valign="middle" scope="col"><span class="cs-block1">No</span></th>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">Does the invention relate to one of Crown's business goals or tie to a road map objective?</td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">Does they invention relate to one of Crown's business goals or tie to a road map objective?</td>
         <td class="il-font-18 il-font-gray" width="10%" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" width="10%" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">Does the invention relate to a new activity or emerging trend?</td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">Does they invention relate to a new activity or emerging trend?</td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">Does the invention represent a significant investment (>$1MM)?</td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">Does they invention represent a significant investment (>$1MM)?</td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">Would competitors or vendors want to use the novel aspects of the product or service? </td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">Would competitors or vendors want to use they novel aspects of they product or service? </td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">If someone else gets a patent on the new aspect of our product or service, and the required us to pay royalities, would it be difficult to change our design or do something else?</td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">If someone else gets a patent on they new aspect of our product or service, and they required us to pay royalities, would it be difficult to change our design or do something else?</td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>
       </tr>
       <tr>
-        <td class="il-font-18 il-font-gray" align="left" valign="middle">Would we consider licensing or transferring the technology to a third party?</td>
+        <td class="il-font-18 il-font-gray" align="left" valign="middle">Would we consider licensing or transferring they technology to a third party?</td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox" id="checkbox">
           <label for="checkbox"></label></td>
         <td class="il-font-18 il-font-gray" align="center" valign="middle"><input type="checkbox" name="checkbox2" id="checkbox2"></td>

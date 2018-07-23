@@ -21,6 +21,9 @@
 		 	<aui:input name="sliderEdit" type="hidden" value="${sliderEdit}"/>
 		  	<aui:input name="ideaContent" type="hidden" value="third blog"/>
   			<aui:input name="ideaId" type="hidden" value="${idea.ideaId}"/>
+  			
+  			
+  			
 			<aui:input name="keywords" type="hidden"/>
 				  <div class="ust-if-title01 clearfix">
 				  		
@@ -165,12 +168,12 @@
 		          <div class="ust-form-box01 ust-form-compelsory" id="<portlet:namespace/>ust-form-div-007">
 				  	 	<aui:input type="hidden" name="hiddenType" value="${idea.innovationType}"/>
 				  	  	<aui:select name="ideaType" showRequiredLabel="<%=false %>"  required="true" label="" cssClass="basic">
-							<aui:option value="" selected="selected">
+							<aui:option value="">
 								<liferay-ui:message key="innovation-type"/>
 							</aui:option>
 							<c:forEach items="${ideaTypeList}" var="ideaType">
 								<c:if test="${ideaType.name ne 'Massive disruption potential'}" >
-									<aui:option value="${ideaType.categoryId}" selected="${idea.innovationType ==  ideaType.categoryId}">${ideaType.name}</aui:option>
+									<aui:option value="${ideaType.categoryId}" selected="${ idea.innovationType eq  ideaType.categoryId }">${ideaType.name}</aui:option>
 								</c:if>
 							</c:forEach>
 						</aui:select>
@@ -189,14 +192,28 @@
 				  
 				  <div class="ust-form-box01 ust-form-compelsory" id="<portlet:namespace/>ust-form-div-009">
 				  	 	<aui:input type="hidden" name="hiddenlineOfbussinessId" value="${idea.lineOfbussinessId}"/>
-				  	  	<aui:select name="lineofbusiness"  showRequiredLabel="<%=false %>" required="true" label="" cssClass="basic">
-							<aui:option value="" selected="selected">
+				  	  	
+				  	  	<aui:select  name="lineofbusiness"  showRequiredLabel="<%=false %>" required="true" label="" cssClass="basic">
+				  	  	
+				  	  			<aui:option value="">
+									<liferay-ui:message key="Line Of Business "/>
+								</aui:option>
+								<c:forEach items="${lineOfbussiness}" var="lofbuss">
+									<aui:option value="${lofbuss.categoryId}" >${lofbuss.name}</aui:option>
+								</c:forEach>
+								<aui:option value="0">All Company</aui:option>
+				  	  		</aui:select>
+				  	  	
+				  	  	<%-- <aui:select  name="lineofbusiness"  showRequiredLabel="<%=false %>" required="true" label="" cssClass="basic">
+							<aui:option value="">
 								<liferay-ui:message key="Line Of Business "/>
 							</aui:option>
-							<c:forEach items="${lineOfbussiness}" var="lofbuss">					
-									<aui:option value="${lofbuss.categoryId}" selected="">${lofbuss.name}</aui:option>
-							</c:forEach>
-						</aui:select>
+							
+								<c:forEach items="${lineOfbussiness}" var="lofbuss">
+									<aui:option value="${lofbuss.categoryId}" >${lofbuss.name}</aui:option>
+								</c:forEach>
+									<aui:option value="0">All Company</aui:option>									
+						</aui:select> --%>
 				  </div> 
 				  
 				  

@@ -8,6 +8,8 @@
 var finalTagHtml = '';
 $(document).ready(function(){
 	
+	
+	
 	 if('${sliderEdit}'){
 	  	$('#<portlet:namespace/>createIdeafm').find('input, textarea, select').attr('readonly', true);
 	 }
@@ -31,7 +33,10 @@ $(document).ready(function(){
 		    return a-b;
 		});
 	 $('#<portlet:namespace/>ideaType').html(Innovationoptions);
-	 $("#<portlet:namespace/>ideaType option[value='']").attr("selected","selected");
+	 $("#<portlet:namespace/>lineofbusiness option[value='']").attr("selected","selected");
+	 <c:if test="${not empty idea.innovationType}">
+	 	$("#<portlet:namespace/>ideaType option[value='${idea.innovationType}']").attr("selected","selected");
+	 </c:if>
 	 
 	 var lofoptions = $("#<portlet:namespace/>lineofbusiness option");
 	 lofoptions.sort(function(a,b){
@@ -42,7 +47,9 @@ $(document).ready(function(){
 		});
 	 $('#<portlet:namespace/>lineofbusiness').html(lofoptions);
 	 $("#<portlet:namespace/>lineofbusiness option[value='']").attr("selected","selected");
-	 
+	 <c:if test="${not empty idea.lineOfbussinessId}">
+	 	$("#<portlet:namespace/>lineofbusiness option[value='${idea.lineOfbussinessId}']").attr("selected","selected");
+	 </c:if>
 	 $('.basic').fancySelect();
 	 
 	 $("#<portlet:namespace />fileUpload1").change(function() {

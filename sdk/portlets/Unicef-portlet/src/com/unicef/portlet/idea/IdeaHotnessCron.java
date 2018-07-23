@@ -1,20 +1,28 @@
 package com.unicef.portlet.idea;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.ss.formula.functions.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import com.liferay.portal.kernel.configuration.Configuration;
@@ -42,6 +50,9 @@ import com.unicef.service.LikeService;
 public class IdeaHotnessCron implements MessageListener{
 	private static final Log log = LogFactoryUtil.getLog(IdeaHotnessCron.class);
 
+	@Autowired
+	private IdeaService ideaService;
+	
 	@Override
 	public void receive(Message message) throws MessageListenerException {
 		
@@ -50,6 +61,7 @@ public class IdeaHotnessCron implements MessageListener{
 		
 		
 		log.info(today +" Idea Hotness Scheduler called");
+	
 		
 //		ApplicationContext use because spring security
 		
@@ -112,12 +124,13 @@ public class IdeaHotnessCron implements MessageListener{
 		    	comment = comment/ideacommentsBig;
 		    }
 		    
-			float hotness = (float)((0.4*endorsment) +(0.3*upvote) +(0.2*comment) + (0.1 * ideaNewnessPoint));			
+		    float hotness = (float)((0.4*endorsment) +(0.3*upvote) +(0.2*comment) + (0.1 * ideaNewnessPoint));			
 			log.info(idea.getIdeaId() + " Hotness " + hotness);			
 			ideaHotness.add(hotness);
 			idea.setHotWeight(Double.parseDouble(String.valueOf(hotness)));
 			ideaservice.update(idea);
 			log.info(idea.getIdeaTitle() +" Is Hot :" + idea.isIdeaHot() + " Idea weight :"+idea.getHotWeight() );
+			
 			
 		}
 		
@@ -144,7 +157,9 @@ public class IdeaHotnessCron implements MessageListener{
 		}	
 		
 		log.info("Idea Hotness Scheduler Complated");
-		checkAPI();
+		
+		//this function is for checking python api is working or not
+		//checkAPI();
 		
 	
 		
@@ -177,16 +192,55 @@ public class IdeaHotnessCron implements MessageListener{
 	    	}
 	        JSONObject jsonObject = JSONFactoryUtil.createJSONObject(output);
 	        log.info("-----> Api is working.!: "+jsonObject.getString("hello"));
-	        
-		}catch(Exception e){
+	        //checkIdeasSubmitted();
+	     }catch(Exception e){
 			log.info("------>Api is not working.!");
 			sendEmail();
 		}
  }
  
+ public void checkIdeasSubmitted() throws IOException{
+	 List<Idea> ideaList =  ideaService.getUnSubmittedIdeasInPython();
+	 for(Idea idea:ideaList){
+		 try{
+		 createFileInApi(idea);
+		 }catch(IOException e){
+			 log.info(" Error found in crea_file using python api ");
+			 log.error(e);
+		 }
+	 }
+}
+ 
+ public void createFileInApi(Idea  idea) throws IOException{
+	 Map<String,Object> _params = new LinkedHashMap<>();
+		_params.put("ideaname",idea.getIdeaTitle());
+		_params.put("ideaid",idea.getIdeaTitle());	
+	    String _ideaDescrption = idea.getDescription().replaceAll("\\<[^>]*>","");
+	    _params.put("ideadetails",_ideaDescrption);
+		
+		StringBuilder _postData = new StringBuilder();
+     for (Map.Entry<String,Object> param : _params.entrySet()) {
+         if (_postData.length() != 0) _postData.append('&');
+         _postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+         _postData.append('=');
+         _postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+     }
+     byte[] _postDataBytes = _postData.toString().getBytes("UTF-8");
+     
+ 	String request = getapicall()+"/create_file";
+		URL _url = new URL(request);
+		HttpURLConnection _conn= (HttpURLConnection) _url.openConnection();
+		_conn.setRequestMethod( "POST" );
+		_conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		_conn.setRequestProperty("Content-Length", String.valueOf(_postDataBytes.length));
+		_conn.setDoOutput(true);
+		_conn.getOutputStream().write(_postDataBytes);
+     Reader _in = new BufferedReader(new InputStreamReader(_conn.getInputStream(), "UTF-8"));
+     log.info("------ Idea is submitted in Python :"+idea.getIdeaId());
+ }
+ 
  public void sendEmail(){
 	 String email = getEmailId();
-	 log.info(email);
 	 SendEmail.SendMail(email);
  }
 	

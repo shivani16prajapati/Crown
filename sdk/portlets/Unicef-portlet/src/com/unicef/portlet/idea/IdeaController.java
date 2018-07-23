@@ -328,6 +328,7 @@ public class IdeaController {
 						 themeDisplay.getScopeGroupId(),themeDisplay.getUserId());
 				 lineOfbussiness = IdeaUtil.getBusinessLine(
 						 themeDisplay.getScopeGroupId(),themeDisplay.getUserId()); 
+				 
 				 fileExtension = PropsUtil
 							.get("idea.attachement.file.extension");
 				Date todayDate = new Date();
@@ -571,6 +572,9 @@ public class IdeaController {
 	
 		long totalIdeas = ideaService.countTotalIdeas();
 		log.info("total ideas : "+totalIdeas);
+		
+		boolean isApiWorking = false;
+		
 		if(totalIdeas >= 500){
 			try{
 				Map<String,Object> params = new LinkedHashMap<>();	
@@ -611,6 +615,7 @@ public class IdeaController {
 		        	}
 		        	
 		        }
+		        
 	        }catch(Exception e){
 	        	log.info("-------Error found in api calling---------");
 	        	sendEmail();
@@ -680,6 +685,7 @@ public class IdeaController {
         Reader _in = new BufferedReader(new InputStreamReader(_conn.getInputStream(), "UTF-8"));
 	}catch(Exception e){
 		log.info("-------Error found in api calling---------");
+		isApiWorking = true;
 		sendEmail();
 	}   
         
@@ -760,6 +766,9 @@ public class IdeaController {
 				ServiceContext	serviceContext = ServiceContextFactory.getInstance(uploadRequest);
 				AssetEntryLocalServiceUtil.updateEntry(themeDisplay.getUserId(), themeDisplay.getScopeGroupId(), 
 						Idea.class.getName(), ideaId,  serviceContext.getAssetCategoryIds(), serviceContext.getAssetTagNames());
+				
+				
+				idea.setSubmittedInPython(isApiWorking);
 				ideaService.create(idea);
 				this.adduserfeed(UserFeedConstant.NEW_IDEA_FEED,UserFeedConstant.All_USER,idea.getIdeaId(),themeDisplay.getUserId());
 				ideaHistory = createIdeaHistory(idea, ideaHistory, ideaId,idea.getVersion());
@@ -1450,7 +1459,7 @@ public class IdeaController {
 				List<AssetCategory> lineOfbussiness = IdeaUtil.getBusinessLine(
 						 themeDisplay.getScopeGroupId(),themeDisplay.getUserId()); 
 				Date todayDate = new Date();
-
+				
 				model.addAttribute("sliderEdit", sliderEdit);
 				model.addAttribute("idea", idea);
 				model.addAttribute("ideaContestList", ideaContestList);

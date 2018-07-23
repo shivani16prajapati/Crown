@@ -61,7 +61,7 @@ public class SendEmail {
 		   message.setSubject(subject);
 		   message.setContent(msg,"text/html");
 		   Transport.send(message);
-		   System.out.println("Sent message successfully....");
+		   LOG.info("Email Sent message successfully");
 
 	      } catch (MessagingException e) {
 	       LOG.info(e.toString());
